@@ -1,22 +1,35 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { QueryProvider } from '@/providers/query-provider';
 import { Toaster } from 'sonner';
+import { siteConfig } from '@/config/site';
 
-const inter = Inter({ subsets: ['latin'] });
+const geistSans = Geist({
+  variable: '--font-sans',
+  subsets: ['latin'],
+});
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
-  title: 'h2o | Modern Next.js Application',
-  description: 'A scalable, production-ready Next.js application.',
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
   openGraph: {
-    title: 'h2o | Modern Next.js Application',
-    description: 'A scalable, production-ready Next.js application.',
-    url: 'https://h2o.com',
-    siteName: 'h2o',
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
     locale: 'en_US',
     type: 'website',
+    images: [{ url: siteConfig.ogImage }],
   },
 };
 
@@ -27,12 +40,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased min-h-screen flex flex-col`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased min-h-screen flex flex-col`}>
         <QueryProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="light"
+            enableSystem={false}
+            forcedTheme="light"
             disableTransitionOnChange
           >
             {children}
