@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Volume2, VolumeX, MessageSquare, Phone, Mail, User } from "lucide-react";
+import { Volume2, VolumeX, MessageSquare, Phone, Mail, User, ArrowRight } from "lucide-react";
 
 export default function Hero() {
   const [isMuted, setIsMuted] = useState(true);
@@ -142,78 +142,105 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Right Side Content (Desktop) */}
+        {/* Right Side Content (Command Center) */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="hero-right-content"
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-end",
+            alignItems: "stretch",
             gap: 16,
             marginRight: 60, // Space for the side bar
+            background: "rgba(6, 35, 71, 0.6)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            border: "1px solid rgba(144, 202, 249, 0.2)",
+            padding: "32px",
+            borderRadius: "16px",
+            width: "380px",
+            boxShadow: "0 20px 40px rgba(6,35,71,0.4)",
           }}
         >
-          <h3
-            style={{
-              color: "#fff",
-              fontSize: 18,
-              fontWeight: 900,
-              fontStyle: "italic",
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-              marginBottom: 8,
-              textShadow: "0 2px 4px rgba(6,35,71,0.5)",
-            }}
-          >
-            BUILT FOR EVERY CHALLENGE
-          </h3>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8, borderBottom: "1px solid rgba(144, 202, 249, 0.2)", paddingBottom: 16 }}>
+            <div style={{ width: 8, height: 8, background: "#42A5F5", borderRadius: "50%", boxShadow: "0 0 10px #42A5F5" }} />
+            <h3
+              style={{
+                color: "#fff",
+                fontSize: 16,
+                fontWeight: 800,
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                margin: 0,
+              }}
+            >
+              Command Center
+            </h3>
+          </div>
+          
           <a
             href="#capabilities"
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              width: 280,
-              background: "#2196F3",
+              justifyContent: "space-between",
+              background: "rgba(255,255,255,0.05)",
               color: "#fff",
               textDecoration: "none",
-              padding: "16px 24px",
+              padding: "16px 20px",
+              borderRadius: "8px",
               fontSize: 14,
-              fontWeight: 800,
+              fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.05em",
-              transition: "background 0.2s",
+              border: "1px solid rgba(255,255,255,0.1)",
+              transition: "all 0.2s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#1E88E5")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "#2196F3")}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "#2196F3";
+              e.currentTarget.style.borderColor = "#2196F3";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+            }}
           >
             Explore Capabilities
+            <ArrowRight size={18} />
           </a>
+
           <a
             href="#contact"
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              width: 280,
-              background: "#0D2B55",
+              justifyContent: "space-between",
+              background: "#1565C0",
               color: "#fff",
               textDecoration: "none",
-              padding: "16px 24px",
+              padding: "16px 20px",
+              borderRadius: "8px",
               fontSize: 14,
-              fontWeight: 800,
+              fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.05em",
-              border: "1px solid rgba(255,255,255,0.1)",
-              transition: "background 0.2s",
+              border: "1px solid transparent",
+              transition: "all 0.2s",
+              boxShadow: "0 4px 12px rgba(21, 101, 192, 0.4)",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#154285")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "#0D2B55")}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "#1E88E5";
+              e.currentTarget.style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "#1565C0";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
           >
             Succeed With Us
+            <ArrowRight size={18} />
           </a>
         </motion.div>
       </div>
