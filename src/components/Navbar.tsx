@@ -250,7 +250,7 @@ export default function Navbar() {
                       display: "flex",
                       alignItems: "center",
                       gap: 6,
-                      color: activeSubmenu === link.label ? "#1565C0" : "#0B1929",
+                      color: activeSubmenu === link.label ? "#1565C0" : "#0D3A73",
                       fontSize: 15,
                       fontWeight: 800,
                       fontFamily: "inherit",
@@ -297,7 +297,7 @@ export default function Navbar() {
                   borderRadius: 4,
                   fontSize: 14,
                   fontWeight: 500,
-                  color: "#0B1929",
+                  color: "#0D3A73",
                   fontFamily: "inherit",
                   outline: "none",
                   transition: "border-color 0.2s, background 0.2s",
@@ -340,7 +340,7 @@ export default function Navbar() {
                       <div key={link.label} style={{ maxWidth: 1600, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr" }}>
                         
                         {/* Megamenu Left: Featured Image Block */}
-                        <div style={{ position: "relative", padding: "48px 60px", background: "#050B14", color: "#fff", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                        <div style={{ position: "relative", padding: "48px 60px", background: "#062347", color: "#fff", display: "flex", flexDirection: "column", justifyContent: "center" }}>
                           <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
                             <Image src={link.mega.image} alt={link.mega.title} fill style={{ objectFit: "cover", opacity: 0.3 }} />
                           </div>
@@ -379,7 +379,7 @@ export default function Navbar() {
                         <div style={{ padding: "48px 60px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40, background: "#F8FAFC" }}>
                           {link.mega.columns.map((col) => (
                             <div key={col.title}>
-                              <h4 style={{ fontSize: 14, fontWeight: 900, fontStyle: "italic", color: "#0B1929", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 20, paddingBottom: 12, borderBottom: "2px solid #E2E8F0" }}>
+                              <h4 style={{ fontSize: 14, fontWeight: 900, fontStyle: "italic", color: "#0D3A73", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 20, paddingBottom: 12, borderBottom: "2px solid #E2E8F0" }}>
                                 {col.title}
                               </h4>
                               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
@@ -481,7 +481,7 @@ export default function Navbar() {
                         fontSize: 16,
                         fontWeight: 800,
                         textTransform: "uppercase",
-                        color: "#0B1929",
+                        color: "#0D3A73",
                         fontFamily: "inherit",
                       }}
                     >

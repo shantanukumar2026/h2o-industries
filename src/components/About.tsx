@@ -28,12 +28,12 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" style={{ background: "#F8FAFC", padding: "100px 0", position: "relative" }}>
+    <section id="about" className="about-section" style={{ background: "#F8FAFC", position: "relative" }}>
       {/* Decorative Top Border */}
       <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: 8, background: "#0D2B55" }} />
       <div style={{ position: "absolute", top: 8, left: 0, width: "100%", height: 2, background: "#1565C0" }} />
 
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 60px" }}>
+      <div className="about-container" style={{ maxWidth: 1440, margin: "0 auto" }}>
         {/* Top: split layout */}
         <div
           ref={ref}
@@ -84,7 +84,7 @@ export default function About() {
                 fontSize: "clamp(2.5rem, 4vw, 4rem)",
                 fontWeight: 900,
                 lineHeight: 1,
-                color: "#0B1929",
+                color: "#0D3A73",
                 marginBottom: 32,
                 textTransform: "uppercase",
                 fontStyle: "italic",
@@ -140,12 +140,9 @@ export default function About() {
           >
             {/* Background Offset Block */}
             <div
+              className="about-image-offset"
               style={{
                 position: "absolute",
-                top: 24,
-                right: -24,
-                bottom: -24,
-                left: 24,
                 background: "#0D2B55",
                 zIndex: -1,
               }}
@@ -221,7 +218,7 @@ export default function About() {
                 }}>
                   <Icon size={24} color="#0D2B55" />
                 </div>
-                <h3 style={{ fontSize: 16, fontWeight: 900, fontStyle: "italic", color: "#0B1929", marginBottom: 16, letterSpacing: "0.02em" }}>
+                <h3 style={{ fontSize: 16, fontWeight: 900, fontStyle: "italic", color: "#0D3A73", marginBottom: 16, letterSpacing: "0.02em" }}>
                   {p.title}
                 </h3>
                 <p style={{ fontSize: 15, lineHeight: 1.7, color: "#64748B", fontWeight: 500, margin: 0 }}>
@@ -239,10 +236,20 @@ export default function About() {
             grid-template-columns: 1fr 1fr !important;
           }
         }
+        .about-section { padding: 100px 0; }
+        .about-container { padding: 0 60px; }
+        .about-image-offset { top: 24px; right: -24px; bottom: -24px; left: 24px; }
+        
         @media (max-width: 1023px) {
           .about-grid {
-            padding: 0 10px !important;
+            gap: 40px !important;
+            margin-bottom: 40px !important;
           }
+        }
+        @media (max-width: 768px) {
+          .about-section { padding: 60px 0; }
+          .about-container { padding: 0 24px; }
+          .about-image-offset { top: 12px; right: -12px; bottom: -12px; left: 12px; }
         }
       `}</style>
     </section>

@@ -38,11 +38,11 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" style={{ background: "#050B14", color: "#94A3B8", fontFamily: "inherit" }}>
+    <footer id="contact" style={{ background: "#062347", color: "#94A3B8", fontFamily: "inherit" }}>
       
       {/* Band 1: Careers CTA */}
-      <div style={{ background: "#0B1929", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "32px 60px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: 32, textAlign: "center" }}>
+      <div style={{ background: "#0D3A73", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+        <div className="footer-cta-pad" style={{ maxWidth: 1440, margin: "0 auto", padding: "32px 60px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: 32, textAlign: "center" }}>
           <h3 style={{ fontSize: 24, fontWeight: 900, fontStyle: "italic", color: "#fff", textTransform: "uppercase", margin: 0, letterSpacing: "0.02em" }}>
             ENGINEER YOUR CAREER. <span style={{ color: "#2196F3" }}>APPLY NOW AT H2 INDUSTRIES.</span>
           </h3>
@@ -105,7 +105,7 @@ export default function Footer() {
 
       {/* Band 3: Main Links & Newsletter */}
       <div style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: 1600, margin: "0 auto", padding: "64px 60px" }}>
+        <div className="footer-main-pad" style={{ maxWidth: 1600, margin: "0 auto", padding: "64px 60px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 32 }} className="footer-main-grid">
             
             {/* Newsletter */}
@@ -151,7 +151,7 @@ export default function Footer() {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = "#fff";
-                    e.currentTarget.style.color = "#0B1929";
+                    e.currentTarget.style.color = "#0D3A73";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.background = "transparent";
@@ -260,7 +260,7 @@ export default function Footer() {
 
       {/* Band 4: Legal / Bottom */}
       <div>
-        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "24px 60px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
+        <div className="footer-legal-pad" style={{ maxWidth: 1440, margin: "0 auto", padding: "24px 60px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
           <p style={{ fontSize: 13, fontWeight: 500, margin: 0 }}>
             © {new Date().getFullYear()}, All Rights Reserved.
           </p>
@@ -307,6 +307,9 @@ export default function Footer() {
           .office-text {
             font-size: 11px !important;
           }
+          .footer-cta-pad { padding: 32px 24px !important; }
+          .footer-main-pad { padding: 48px 24px !important; }
+          .footer-legal-pad { padding: 24px 24px !important; flex-direction: column; justify-content: center; text-align: center; }
         }
       `}</style>
     </footer>

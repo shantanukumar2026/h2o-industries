@@ -18,11 +18,11 @@ export default function Industries() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="industries" style={{ background: "#0A1929", padding: "100px 0", position: "relative" }}>
+    <section id="industries" className="industries-section" style={{ background: "#062347", position: "relative" }}>
       {/* Top Border Accent */}
       <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: 4, background: "#2196F3" }} />
 
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 60px", position: "relative" }}>
+      <div className="industries-container" style={{ maxWidth: 1440, margin: "0 auto", position: "relative" }}>
         {/* Header */}
         <div ref={ref} style={{ marginBottom: 64, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
@@ -94,6 +94,15 @@ export default function Industries() {
           })}
         </div>
       </div>
+      
+      <style>{`
+        .industries-section { padding: 100px 0; }
+        .industries-container { padding: 0 60px; }
+        @media (max-width: 768px) {
+          .industries-section { padding: 60px 0; }
+          .industries-container { padding: 0 24px; }
+        }
+      `}</style>
     </section>
   );
 }

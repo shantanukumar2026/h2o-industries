@@ -220,6 +220,7 @@ export default function Hero() {
 
       {/* Extreme Right Edge UI */}
       <div
+        className="hero-extreme-edge"
         style={{
           position: "absolute",
           right: 0,
@@ -299,6 +300,7 @@ export default function Hero() {
       {/* Bottom Right Floating Button */}
       <a
         href="#contact"
+        className="hero-floating-btn"
         style={{
           position: "absolute",
           bottom: 30,
@@ -384,6 +386,17 @@ export default function Hero() {
             align-items: flex-start !important;
             margin-top: 40px !important;
             margin-right: 0 !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .hero-extreme-edge {
+            display: none !important;
+          }
+          .hero-floating-btn {
+            right: 20px !important;
+            bottom: 20px !important;
+            padding: 12px 20px !important;
+            font-size: 12px !important;
           }
         }
       `}</style>

@@ -22,7 +22,7 @@ const cats = ["All", "Sampling Stations", "Drainage Infrastructure", "Probe Syst
 
 const catColors: Record<string, string> = {
   "Sampling Stations": "#1565C0",
-  "Drainage Infrastructure": "#0B1929",
+  "Drainage Infrastructure": "#0D3A73",
   "Probe Systems": "#0277BD",
 };
 
@@ -43,8 +43,8 @@ export default function Products() {
   const hasMore = count < filtered.length;
 
   return (
-    <section id="products" className="section-pad" style={{ background: "#F8FAFC" }}>
-      <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 60px" }}>
+    <section id="products" className="section-pad products-section" style={{ background: "#F8FAFC" }}>
+      <div className="products-container" style={{ maxWidth: 1440, margin: "0 auto" }}>
         {/* Header */}
         <div ref={ref} style={{ textAlign: "left", marginBottom: 64 }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
@@ -77,7 +77,7 @@ export default function Products() {
               style={{
                 fontSize: "clamp(2.5rem, 4vw, 4rem)",
                 fontWeight: 900,
-                color: "#0B1929",
+                color: "#0D3A73",
                 lineHeight: 1,
                 marginBottom: 24,
                 textTransform: "uppercase",
@@ -116,7 +116,7 @@ export default function Products() {
                 border: "2px solid #E2E8F0",
                 fontSize: 15,
                 fontWeight: 600,
-                color: "#0B1929",
+                color: "#0D3A73",
                 fontFamily: "inherit",
                 outline: "none",
                 transition: "border-color 0.2s",
@@ -134,8 +134,8 @@ export default function Products() {
                 onClick={() => { setCat(c); setCount(8); }}
                 style={{
                   padding: "16px 24px",
-                  border: cat === c ? "2px solid #0B1929" : "2px solid #E2E8F0",
-                  background: cat === c ? "#0B1929" : "#fff",
+                  border: cat === c ? "2px solid #0D3A73" : "2px solid #E2E8F0",
+                  background: cat === c ? "#0D3A73" : "#fff",
                   color: cat === c ? "#fff" : "#475569",
                   fontSize: 14,
                   fontWeight: 800,
@@ -145,7 +145,7 @@ export default function Products() {
                   fontFamily: "inherit",
                   transition: "all 0.2s",
                 }}
-                onMouseEnter={(e) => { if (cat !== c) e.currentTarget.style.borderColor = "#0B1929"; }}
+                onMouseEnter={(e) => { if (cat !== c) e.currentTarget.style.borderColor = "#0D3A73"; }}
                 onMouseLeave={(e) => { if (cat !== c) e.currentTarget.style.borderColor = "#E2E8F0"; }}
               >
                 {c}
@@ -191,7 +191,7 @@ export default function Products() {
             <button
               onClick={() => setCount((c) => c + 4)}
               style={{
-                background: "#0B1929",
+                background: "#0D3A73",
                 color: "#fff",
                 border: "none",
                 padding: "16px 32px",
@@ -207,7 +207,7 @@ export default function Products() {
                 gap: 8,
               }}
               onMouseEnter={(e) => { e.currentTarget.style.background = "#1565C0"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "#0B1929"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "#0D3A73"; }}
             >
               LOAD MORE <ArrowRight size={16} />
             </button>
@@ -267,11 +267,11 @@ export default function Products() {
                   }}>
                     {qv.category}
                   </span>
-                  <h3 style={{ fontSize: 24, fontWeight: 900, fontStyle: "italic", color: "#0B1929", textTransform: "uppercase", margin: 0 }}>{qv.name}</h3>
+                  <h3 style={{ fontSize: 24, fontWeight: 900, fontStyle: "italic", color: "#0D3A73", textTransform: "uppercase", margin: 0 }}>{qv.name}</h3>
                   <p style={{ fontSize: 13, fontWeight: 700, color: "#64748B", marginTop: 8, letterSpacing: "0.05em" }}>SKU: {qv.sku}</p>
                 </div>
                 <button onClick={() => setQv(null)} style={{ background: "transparent", border: "2px solid #E2E8F0", padding: 8, cursor: "pointer", flexShrink: 0, transition: "background 0.2s" }} onMouseEnter={(e) => e.currentTarget.style.background = "#F1F5F9"} onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}>
-                  <X size={20} color="#0B1929" />
+                  <X size={20} color="#0D3A73" />
                 </button>
               </div>
 
@@ -281,13 +281,13 @@ export default function Products() {
                   <Image src={qv.image} alt={qv.name} fill style={{ objectFit: "contain", padding: 40 }} />
                 </div>
                 <div style={{ padding: 32 }}>
-                  <h4 style={{ fontSize: 14, fontWeight: 900, color: "#0B1929", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 16 }}>PRODUCT OVERVIEW</h4>
+                  <h4 style={{ fontSize: 14, fontWeight: 900, color: "#0D3A73", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 16 }}>PRODUCT OVERVIEW</h4>
                   <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.7, marginBottom: 32, fontWeight: 500 }}>{qv.description}</p>
                   
-                  <h4 style={{ fontSize: 14, fontWeight: 900, color: "#0B1929", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 16 }}>TECHNICAL SPECIFICATIONS</h4>
+                  <h4 style={{ fontSize: 14, fontWeight: 900, color: "#0D3A73", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 16 }}>TECHNICAL SPECIFICATIONS</h4>
                   <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 12, marginBottom: 40 }}>
                     {qv.features.map((f) => (
-                      <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 15, color: "#0B1929", fontWeight: 600 }}>
+                      <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 15, color: "#0D3A73", fontWeight: 600 }}>
                         <div style={{ width: 20, height: 20, background: "rgba(21,101,192,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
                           <div style={{ width: 6, height: 6, background: "#1565C0" }} />
                         </div>
@@ -329,11 +329,15 @@ export default function Products() {
       </AnimatePresence>
 
       <style>{`
+        .products-section { padding: 100px 0; }
+        .products-container { padding: 0 60px; }
         @media (min-width: 768px) {
           .modal-grid { grid-template-columns: 1fr 1.2fr !important; }
         }
         @media (max-width: 767px) {
           .modal-img-col { border-right: none !important; border-bottom: 2px solid #E2E8F0 !important; }
+          .products-section { padding: 60px 0; }
+          .products-container { padding: 0 24px; }
         }
       `}</style>
     </section>
@@ -412,8 +416,8 @@ function ProductCard({ product, onQuickView, catColor }: {
               alignItems: "center",
               gap: 8,
               background: "#fff",
-              color: "#0B1929",
-              border: "2px solid #0B1929",
+              color: "#0D3A73",
+              border: "2px solid #0D3A73",
               padding: "12px 20px",
               fontSize: 13,
               fontWeight: 900,
@@ -430,8 +434,8 @@ function ProductCard({ product, onQuickView, catColor }: {
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "#fff";
-              e.currentTarget.style.borderColor = "#0B1929";
-              e.currentTarget.style.color = "#0B1929";
+              e.currentTarget.style.borderColor = "#0D3A73";
+              e.currentTarget.style.color = "#0D3A73";
             }}
           >
             <Eye size={16} /> QUICK VIEW
@@ -442,7 +446,7 @@ function ProductCard({ product, onQuickView, catColor }: {
       {/* Info */}
       <div style={{ padding: "20px", flex: 1, display: "flex", flexDirection: "column" }}>
         <p style={{ fontSize: 12, fontWeight: 700, color: "#64748B", letterSpacing: "0.05em", marginBottom: 8 }}>SKU: {product.sku}</p>
-        <h3 style={{ fontSize: 16, fontWeight: 900, fontStyle: "italic", color: "#0B1929", textTransform: "uppercase", lineHeight: 1.3, marginBottom: 20, flex: 1 }}>
+        <h3 style={{ fontSize: 16, fontWeight: 900, fontStyle: "italic", color: "#0D3A73", textTransform: "uppercase", lineHeight: 1.3, marginBottom: 20, flex: 1 }}>
           {product.name}
         </h3>
         <button
@@ -451,7 +455,7 @@ function ProductCard({ product, onQuickView, catColor }: {
             width: "100%",
             padding: "12px",
             background: "transparent",
-            color: "#0B1929",
+            color: "#0D3A73",
             border: "2px solid #E2E8F0",
             fontSize: 14,
             fontWeight: 800,
@@ -462,7 +466,7 @@ function ProductCard({ product, onQuickView, catColor }: {
             transition: "all 0.2s",
           }}
           onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#1565C0"; e.currentTarget.style.color = "#1565C0"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.color = "#0B1929"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.color = "#0D3A73"; }}
         >
           VIEW DETAILS
         </button>
