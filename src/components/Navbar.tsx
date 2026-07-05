@@ -3,14 +3,14 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Info, Mail, MapPin, User, FileText, ChevronDown, Search, ArrowRight } from "lucide-react";
+import { Menu, X, Info, Mail, MapPin, User, FileText, ChevronDown, Search, ArrowRight, Globe } from "lucide-react";
 
 const topLinks = [
-  { label: "About", href: "#about", icon: Info },
+  { label: "History", href: "#history", icon: Info },
+  { label: "Our Values", href: "#values", icon: User },
+  { label: "Locations", href: "#locations", icon: MapPin },
   { label: "Contact", href: "#contact", icon: Mail },
-  { label: "Locations", href: "#contact", icon: MapPin },
-  { label: "Account", href: "#", icon: User },
-  { label: "Quote", href: "#contact", icon: FileText },
+  { label: "Quote", href: "#quote", icon: FileText },
 ];
 
 const mainLinks = [
@@ -114,14 +114,19 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 50,
-          background: "#fff",
-          boxShadow: scrolled ? "0 4px 20px rgba(6,35,71,0.08)" : "0 2px 10px rgba(6,35,71,0.05)",
+          background: "transparent",
+          boxShadow: scrolled ? "0 4px 30px rgba(6,35,71,0.15)" : "none",
           transition: "box-shadow 0.3s ease",
         }}
         onMouseLeave={() => setActiveSubmenu(null)}
       >
-        {/* Top Bar (Brand Color) */}
-        <div style={{ background: "#1565C0" }}>
+        {/* Top Bar (Brand Color with Smart Scroll) */}
+        <motion.div
+          initial={{ height: 64, opacity: 1 }}
+          animate={{ height: scrolled ? 0 : 64, opacity: scrolled ? 0 : 1 }}
+          style={{ background: "#1565C0", overflow: "hidden" }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
           <div
             style={{
               maxWidth: 1600,
@@ -230,6 +235,28 @@ export default function Navbar() {
                   }}
                 />
               </div>
+              {/* Language Selector */}
+              <button
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                  background: "rgba(255,255,255,0.1)",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  padding: "8px 12px",
+                  borderRadius: "4px",
+                  color: "#fff",
+                  fontSize: 12,
+                  fontWeight: 800,
+                  cursor: "pointer",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.1)")}
+              >
+                <Globe size={14} />
+                EN
+              </button>
             </div>
 
             {/* Mobile Hamburger */}
@@ -249,10 +276,10 @@ export default function Navbar() {
               {mobileOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Bottom Bar (White) */}
-        <div className="bottom-bar" style={{ display: "none", borderBottom: "1px solid #90CAF9", position: "relative" }}>
+        {/* Bottom Bar (Frosted Glass) */}
+        <div className="bottom-bar" style={{ display: "none", borderBottom: "1px solid rgba(144, 202, 249, 0.4)", position: "relative", background: "rgba(255, 255, 255, 0.85)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}>
           <div
             style={{
               maxWidth: 1600,
@@ -288,7 +315,7 @@ export default function Navbar() {
                       textTransform: "uppercase",
                       transition: "color 0.2s",
                       height: "100%",
-                      borderBottom: activeSubmenu === link.label ? "3px solid #1565C0" : "3px solid transparent",
+                      position: "relative",
                     }}
                   >
                     {link.label}
@@ -298,6 +325,19 @@ export default function Navbar() {
                       style={{
                         transform: activeSubmenu === link.label ? "rotate(180deg)" : "rotate(0deg)",
                         transition: "transform 0.2s",
+                      }}
+                    />
+                    <div
+                      className="nav-underline"
+                      style={{
+                        position: "absolute",
+                        bottom: 0,
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        height: 3,
+                        background: "#1565C0",
+                        width: activeSubmenu === link.label ? "100%" : "0%",
+                        transition: "width 0.3s ease",
                       }}
                     />
                   </button>
@@ -332,7 +372,12 @@ export default function Navbar() {
                       <div key={link.label} style={{ maxWidth: 1600, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr" }}>
                         
                         {/* Megamenu Left: Featured Image Block */}
-                        <div style={{ position: "relative", padding: "48px 60px", background: "#062347", color: "#fff", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                        <motion.div
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.1 }}
+                          style={{ position: "relative", padding: "48px 60px", background: "#062347", color: "#fff", display: "flex", flexDirection: "column", justifyContent: "center" }}
+                        >
                           <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
                             <Image src={link.mega.image} alt={link.mega.title} fill style={{ objectFit: "cover", opacity: 0.3 }} />
                           </div>
@@ -365,12 +410,17 @@ export default function Navbar() {
                               {link.mega.link} <ArrowRight size={16} />
                             </button>
                           </div>
-                        </div>
+                        </motion.div>
 
                         {/* Megamenu Right: Link Columns */}
-                        <div style={{ padding: "48px 60px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40, background: "#F0F7FF" }}>
-                          {link.mega.columns.map((col) => (
-                            <div key={col.title}>
+                        <div style={{ padding: "48px 60px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40, background: "rgba(240, 247, 255, 0.95)" }}>
+                          {link.mega.columns.map((col, idx) => (
+                            <motion.div
+                              key={col.title}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.15 + (idx * 0.1) }}
+                            >
                               <h4 style={{ fontSize: 14, fontWeight: 900, fontStyle: "italic", color: "#0D3A73", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 20, paddingBottom: 12, borderBottom: "2px solid #90CAF9" }}>
                                 {col.title}
                               </h4>
@@ -398,7 +448,7 @@ export default function Navbar() {
                                   </li>
                                 ))}
                               </ul>
-                            </div>
+                            </motion.div>
                           ))}
                         </div>
 
