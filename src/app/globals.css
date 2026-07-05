@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+/* ─── H2 Industries Brand Tokens ─── */
+:root {
+  --h2-blue: #1565C0;
+  --h2-blue-light: #2196F3;
+  --h2-blue-dark: #0D47A1;
+  --h2-navy: #0A1929;
+  --h2-navy-mid: #0D2137;
+  --h2-white: #FFFFFF;
+  --h2-grey: #F5F7FA;
+  --h2-grey-mid: #E2E8F0;
+  --h2-text: #0B1929;
+  --h2-text-muted: #4A6375;
+}
+
+/* ─── Base Reset ─── */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  background: #ffffff;
+  color: var(--h2-text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Typography ─── */
+.font-display {
+  font-family: var(--font-barlow), 'Barlow Condensed', 'Impact', sans-serif;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--h2-grey); }
+::-webkit-scrollbar-thumb { background: var(--h2-blue); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--h2-blue-dark); }
+
+/* ─── Selection ─── */
+::selection { background: var(--h2-blue); color: #fff; }
+
+/* ─── Section Spacing ─── */
+.section-pad {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+@media (min-width: 1024px) {
+  .section-pad {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+  }
+}
+
+/* ─── Video Overlay ─── */
+.hero-overlay {
+  background: linear-gradient(
+    160deg,
+    rgba(8, 20, 40, 0.72) 0%,
+    rgba(10, 25, 55, 0.55) 50%,
+    rgba(8, 20, 40, 0.80) 100%
+  );
+}
+
+/* ─── Gradient Heading ─── */
+.text-gradient {
+  background: linear-gradient(135deg, #60AEFF 0%, #2196F3 40%, #1565C0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Focus ─── */
+*:focus-visible {
+  outline: 2px solid var(--h2-blue-light);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Smooth image loading ─── */
+img { transition: opacity 0.3s ease; }
+
+/* ─── Noise texture overlay ─── */
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* ─── Card hover glow ─── */
+.card-glow {
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 12px 40px -8px rgba(21, 101, 192, 0.2);
+  transform: translateY(-2px);
+  border-color: rgba(21, 101, 192, 0.3);
+}
+
+/* ─── Blue pill tag ─── */
+.pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  background: rgba(21, 101, 192, 0.08);
+  border: 1px solid rgba(21, 101, 192, 0.2);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1565C0;
+}
+.pill-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1565C0;
+}
+.pill-tag-dark {
+  background: rgba(33, 150, 243, 0.12);
+  border-color: rgba(33, 150, 243, 0.25);
+  color: #90CAF9;
+}
+.pill-tag-dark .dot {
+  background: #2196F3;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
