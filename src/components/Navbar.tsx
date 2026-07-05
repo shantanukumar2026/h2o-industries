@@ -115,7 +115,7 @@ export default function Navbar() {
           right: 0,
           zIndex: 50,
           background: "#fff",
-          boxShadow: scrolled ? "0 4px 20px rgba(0,0,0,0.08)" : "0 2px 10px rgba(0,0,0,0.05)",
+          boxShadow: scrolled ? "0 4px 20px rgba(6,35,71,0.08)" : "0 2px 10px rgba(6,35,71,0.05)",
           transition: "box-shadow 0.3s ease",
         }}
         onMouseLeave={() => setActiveSubmenu(null)}
@@ -221,7 +221,7 @@ export default function Navbar() {
         </div>
 
         {/* Bottom Bar (White) */}
-        <div className="bottom-bar" style={{ display: "none", borderBottom: "1px solid #E2E8F0", position: "relative" }}>
+        <div className="bottom-bar" style={{ display: "none", borderBottom: "1px solid #90CAF9", position: "relative" }}>
           <div
             style={{
               maxWidth: 1600,
@@ -292,8 +292,8 @@ export default function Navbar() {
                 style={{
                   width: "100%",
                   padding: "10px 16px 10px 44px",
-                  background: "#F8FAFC",
-                  border: "1px solid #CBD5E1",
+                  background: "#F0F7FF",
+                  border: "1px solid #64B5F6",
                   borderRadius: 4,
                   fontSize: 14,
                   fontWeight: 500,
@@ -307,8 +307,8 @@ export default function Navbar() {
                   e.target.style.background = "#fff";
                 }}
                 onBlur={(e) => {
-                  e.target.style.borderColor = "#CBD5E1";
-                  e.target.style.background = "#F8FAFC";
+                  e.target.style.borderColor = "#64B5F6";
+                  e.target.style.background = "#F0F7FF";
                 }}
               />
             </div>
@@ -328,8 +328,8 @@ export default function Navbar() {
                   left: 0,
                   right: 0,
                   background: "#fff",
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                  borderBottom: "1px solid #E2E8F0",
+                  boxShadow: "0 20px 40px rgba(6,35,71,0.1)",
+                  borderBottom: "1px solid #90CAF9",
                   zIndex: 40,
                   overflow: "hidden",
                 }}
@@ -348,7 +348,7 @@ export default function Navbar() {
                             <h3 style={{ fontSize: 24, fontWeight: 900, fontStyle: "italic", textTransform: "uppercase", marginBottom: 12 }}>
                               {link.mega.title}
                             </h3>
-                            <p style={{ fontSize: 15, color: "#94A3B8", lineHeight: 1.6, marginBottom: 24, fontWeight: 500, maxWidth: 320 }}>
+                            <p style={{ fontSize: 15, color: "#42A5F5", lineHeight: 1.6, marginBottom: 24, fontWeight: 500, maxWidth: 320 }}>
                               {link.mega.desc}
                             </p>
                             <button
@@ -376,10 +376,10 @@ export default function Navbar() {
                         </div>
 
                         {/* Megamenu Right: Link Columns */}
-                        <div style={{ padding: "48px 60px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40, background: "#F8FAFC" }}>
+                        <div style={{ padding: "48px 60px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40, background: "#F0F7FF" }}>
                           {link.mega.columns.map((col) => (
                             <div key={col.title}>
-                              <h4 style={{ fontSize: 14, fontWeight: 900, fontStyle: "italic", color: "#0D3A73", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 20, paddingBottom: 12, borderBottom: "2px solid #E2E8F0" }}>
+                              <h4 style={{ fontSize: 14, fontWeight: 900, fontStyle: "italic", color: "#0D3A73", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 20, paddingBottom: 12, borderBottom: "2px solid #90CAF9" }}>
                                 {col.title}
                               </h4>
                               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
@@ -393,13 +393,13 @@ export default function Navbar() {
                                         padding: 0,
                                         fontSize: 15,
                                         fontWeight: 600,
-                                        color: "#475569",
+                                        color: "#1565C0",
                                         cursor: "pointer",
                                         textAlign: "left",
                                         transition: "color 0.2s",
                                       }}
                                       onMouseEnter={(e) => (e.currentTarget.style.color = "#1565C0")}
-                                      onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
+                                      onMouseLeave={(e) => (e.currentTarget.style.color = "#1565C0")}
                                     >
                                       {item}
                                     </button>
@@ -434,8 +434,8 @@ export default function Navbar() {
               right: 0,
               background: "#fff",
               zIndex: 49,
-              boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-              borderBottom: "1px solid #E2E8F0",
+              boxShadow: "0 10px 30px rgba(6,35,71,0.1)",
+              borderBottom: "1px solid #90CAF9",
               maxHeight: "calc(100vh - 64px)",
               overflowY: "auto",
             }}
@@ -454,8 +454,8 @@ export default function Navbar() {
                   style={{
                     width: "100%",
                     padding: "12px 12px 12px 40px",
-                    background: "#F1F5F9",
-                    border: "1px solid #CBD5E1",
+                    background: "#E0F0FF",
+                    border: "1px solid #64B5F6",
                     borderRadius: 4,
                     fontSize: 15,
                     fontFamily: "inherit",
@@ -465,7 +465,7 @@ export default function Navbar() {
               </div>
 
               {/* Mobile Main Links */}
-              <div style={{ borderBottom: "1px solid #E2E8F0", paddingBottom: 16, marginBottom: 16 }}>
+              <div style={{ borderBottom: "1px solid #90CAF9", paddingBottom: 16, marginBottom: 16 }}>
                 {mainLinks.map((link) => (
                   <div key={link.label} style={{ marginBottom: 12 }}>
                     <button
@@ -504,7 +504,7 @@ export default function Navbar() {
                         >
                           {link.mega.columns.map((col) => (
                             <div key={col.title}>
-                              <h5 style={{ fontSize: 12, fontWeight: 800, color: "#94A3B8", marginBottom: 8, letterSpacing: "0.05em" }}>
+                              <h5 style={{ fontSize: 12, fontWeight: 800, color: "#42A5F5", marginBottom: 8, letterSpacing: "0.05em" }}>
                                 {col.title}
                               </h5>
                               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -519,7 +519,7 @@ export default function Navbar() {
                                       padding: "8px 16px",
                                       fontSize: 14,
                                       fontWeight: 600,
-                                      color: "#475569",
+                                      color: "#1565C0",
                                       fontFamily: "inherit",
                                     }}
                                   >
@@ -553,7 +553,7 @@ export default function Navbar() {
                         fontSize: 14,
                         fontWeight: 700,
                         textTransform: "uppercase",
-                        color: "#475569",
+                        color: "#1565C0",
                         display: "flex",
                         alignItems: "center",
                         gap: 12,

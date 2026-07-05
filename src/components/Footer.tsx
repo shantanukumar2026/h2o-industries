@@ -38,7 +38,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" style={{ background: "#062347", color: "#94A3B8", fontFamily: "inherit" }}>
+    <footer id="contact" style={{ background: "#062347", color: "#42A5F5", fontFamily: "inherit" }}>
       
       {/* Band 1: Careers CTA */}
       <div style={{ background: "#0D3A73", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
@@ -178,14 +178,14 @@ export default function Footer() {
                       <a
                         href={link.href}
                         style={{
-                          color: "#94A3B8",
+                          color: "#42A5F5",
                           textDecoration: "none",
                           fontSize: 14,
                           fontWeight: 500,
                           transition: "color 0.2s",
                         }}
                         onMouseEnter={(e) => (e.currentTarget.style.color = "#2196F3")}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = "#94A3B8")}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = "#42A5F5")}
                       >
                         {link.label}
                       </a>
@@ -203,7 +203,7 @@ export default function Footer() {
               <a
                 href="#locations"
                 style={{
-                  color: "#94A3B8",
+                  color: "#42A5F5",
                   textDecoration: "none",
                   fontSize: 14,
                   fontWeight: 500,
@@ -212,7 +212,7 @@ export default function Footer() {
                   transition: "color 0.2s",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#2196F3")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#94A3B8")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#42A5F5")}
               >
                 Locations
               </a>
@@ -270,14 +270,14 @@ export default function Footer() {
                 key={link}
                 href="#"
                 style={{
-                  color: "#94A3B8",
+                  color: "#42A5F5",
                   textDecoration: "none",
                   fontSize: 13,
                   fontWeight: 600,
                   transition: "color 0.2s",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#94A3B8")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#42A5F5")}
               >
                 {link}
               </a>

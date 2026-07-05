@@ -67,7 +67,7 @@ export default function Industries() {
               BUILT FOR THE INDUSTRIES<br />
               <span style={{ color: "#2196F3" }}>THAT SHAPE OUR WORLD</span>
             </h2>
-            <p style={{ color: "#94A3B8", fontSize: 16, maxWidth: 600, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
+            <p style={{ color: "#42A5F5", fontSize: 16, maxWidth: 600, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
               H2 Industries products are deployed across a broad range of sectors — wherever precision water management matters most.
             </p>
           </motion.div>
@@ -141,7 +141,7 @@ function IndustryCard({ ind, Icon }: { ind: typeof industries[0]; Icon: React.El
       <h3 style={{ fontSize: 18, fontWeight: 900, fontStyle: "italic", color: "#fff", marginBottom: 12, letterSpacing: "0.02em" }}>
         {ind.title}
       </h3>
-      <p style={{ fontSize: 15, color: "#94A3B8", lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
+      <p style={{ fontSize: 15, color: "#42A5F5", lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
         {ind.desc}
       </p>
     </div>

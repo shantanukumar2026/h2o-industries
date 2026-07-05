@@ -107,7 +107,7 @@ export default function Hero() {
               textTransform: "uppercase",
               fontStyle: "italic",
               letterSpacing: "0.02em",
-              textShadow: "0 4px 12px rgba(0,0,0,0.3)",
+              textShadow: "0 4px 12px rgba(6,35,71,0.3)",
               margin: "12px 0",
             }}
           >
@@ -165,7 +165,7 @@ export default function Hero() {
               textTransform: "uppercase",
               letterSpacing: "0.05em",
               marginBottom: 8,
-              textShadow: "0 2px 4px rgba(0,0,0,0.5)",
+              textShadow: "0 2px 4px rgba(6,35,71,0.5)",
             }}
           >
             BUILT FOR EVERY CHALLENGE
@@ -316,7 +316,7 @@ export default function Hero() {
           fontSize: 14,
           fontWeight: 700,
           zIndex: 20,
-          boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+          boxShadow: "0 10px 30px rgba(6,35,71,0.3)",
           transition: "transform 0.2s, background 0.2s",
         }}
         onMouseEnter={(e) => {

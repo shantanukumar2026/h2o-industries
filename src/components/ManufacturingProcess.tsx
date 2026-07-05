@@ -67,7 +67,7 @@ export default function ManufacturingProcess() {
                     height: 80,
                     borderRadius: "50%",
                     background: "#fff",
-                    border: "3px solid #E2E8F0",
+                    border: "3px solid #90CAF9",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

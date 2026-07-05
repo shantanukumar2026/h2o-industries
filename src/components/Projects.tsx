@@ -89,13 +89,13 @@ export default function Projects() {
                 overflow: "hidden",
                 maxWidth: 640,
                 width: "100%",
-                boxShadow: "0 40px 100px rgba(0,0,0,0.5)",
+                boxShadow: "0 40px 100px rgba(6,35,71,0.5)",
               }}
             >
               <div style={{ position: "relative", aspectRatio: "1" }}>
                 <Image src={lb.image} alt={lb.label} fill style={{ objectFit: "contain", padding: 32 }} />
               </div>
-              <div style={{ padding: "16px 24px", background: "#fff", borderTop: "1px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <div style={{ padding: "16px 24px", background: "#fff", borderTop: "1px solid #90CAF9", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 700, color: "#0B1929" }}>{lb.label}</p>
                   <p style={{ fontSize: 11, color: "#1565C0", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>H2 Industries™</p>
@@ -135,10 +135,10 @@ function GalleryItem({ item, index, inView, onOpen, tall }: {
         borderRadius: 14,
         overflow: "hidden",
         background: "#F5F7FA",
-        border: `1.5px solid ${hovered ? "rgba(21,101,192,0.35)" : "#E2E8F0"}`,
+        border: `1.5px solid ${hovered ? "rgba(21,101,192,0.35)" : "#90CAF9"}`,
         cursor: "pointer",
         transition: "all 0.28s ease",
-        boxShadow: hovered ? "0 12px 40px rgba(21,101,192,0.15)" : "0 2px 8px rgba(0,0,0,0.04)",
+        boxShadow: hovered ? "0 12px 40px rgba(21,101,192,0.15)" : "0 2px 8px rgba(6,35,71,0.04)",
         transform: hovered ? "translateY(-2px)" : "translateY(0)",
         gridRow: tall ? "span 2" : "span 1",
       }}

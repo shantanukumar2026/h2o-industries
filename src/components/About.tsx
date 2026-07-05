@@ -28,7 +28,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="about-section" style={{ background: "#F8FAFC", position: "relative" }}>
+    <section id="about" className="about-section" style={{ background: "#F0F7FF", position: "relative" }}>
       {/* Decorative Top Border */}
       <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: 8, background: "#0D2B55" }} />
       <div style={{ position: "absolute", top: 8, left: 0, width: "100%", height: 2, background: "#1565C0" }} />
@@ -99,10 +99,10 @@ export default function About() {
             {/* Blue Divider */}
             <div style={{ width: 80, height: 4, background: "#2196F3", marginBottom: 32 }} />
 
-            <p style={{ color: "#475569", fontSize: 16, lineHeight: 1.8, marginBottom: 20, fontWeight: 500 }}>
+            <p style={{ color: "#1565C0", fontSize: 16, lineHeight: 1.8, marginBottom: 20, fontWeight: 500 }}>
               H2 Industries was founded with a single unwavering mission: to develop industrial water management products that actively reduce environmental harm. We saw a gap in the market — stormwater systems that were purely functional but ignored their ecological footprint.
             </p>
-            <p style={{ color: "#475569", fontSize: 16, lineHeight: 1.8, marginBottom: 40, fontWeight: 500 }}>
+            <p style={{ color: "#1565C0", fontSize: 16, lineHeight: 1.8, marginBottom: 40, fontWeight: 500 }}>
               Today, H2 Industries engineers and manufactures a comprehensive range of water sampling stations, modular enclosures, and precision drainage infrastructure — all designed from the ground up to protect our waterways and oceans.
             </p>
 
@@ -152,9 +152,9 @@ export default function About() {
               position: "relative",
               width: "100%",
               aspectRatio: "4/3",
-              background: "#000",
+              background: "#062347",
               border: "8px solid #fff",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+              boxShadow: "0 20px 40px rgba(6,35,71,0.1)",
             }}>
               <Image
                 src="/images/2.jpeg"
@@ -202,26 +202,26 @@ export default function About() {
                   background: "#fff",
                   padding: "40px 32px",
                   borderTop: "4px solid #1565C0",
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+                  boxShadow: "0 10px 30px rgba(6,35,71,0.05)",
                   position: "relative",
                 }}
               >
                 <div style={{
                   width: 56,
                   height: 56,
-                  background: "#F1F5F9",
+                  background: "#E0F0FF",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   marginBottom: 24,
-                  border: "1px solid #E2E8F0",
+                  border: "1px solid #90CAF9",
                 }}>
                   <Icon size={24} color="#0D2B55" />
                 </div>
                 <h3 style={{ fontSize: 16, fontWeight: 900, fontStyle: "italic", color: "#0D3A73", marginBottom: 16, letterSpacing: "0.02em" }}>
                   {p.title}
                 </h3>
-                <p style={{ fontSize: 15, lineHeight: 1.7, color: "#64748B", fontWeight: 500, margin: 0 }}>
+                <p style={{ fontSize: 15, lineHeight: 1.7, color: "#1976D2", fontWeight: 500, margin: 0 }}>
                   {p.desc}
                 </p>
               </motion.div>

@@ -43,7 +43,7 @@ export default function Products() {
   const hasMore = count < filtered.length;
 
   return (
-    <section id="products" className="section-pad products-section" style={{ background: "#F8FAFC" }}>
+    <section id="products" className="section-pad products-section" style={{ background: "#F0F7FF" }}>
       <div className="products-container" style={{ maxWidth: 1440, margin: "0 auto" }}>
         {/* Header */}
         <div ref={ref} style={{ textAlign: "left", marginBottom: 64 }}>
@@ -90,7 +90,7 @@ export default function Products() {
             </h2>
             <div style={{ width: 80, height: 4, background: "#1565C0", marginBottom: 32 }} />
 
-            <p style={{ color: "#475569", fontSize: 16, maxWidth: 600, lineHeight: 1.7, fontWeight: 500 }}>
+            <p style={{ color: "#1565C0", fontSize: 16, maxWidth: 600, lineHeight: 1.7, fontWeight: 500 }}>
               Browse the complete H2 Industries range — precision-engineered water management products for heavy industrial, municipal, and environmental applications.
             </p>
           </motion.div>
@@ -103,7 +103,7 @@ export default function Products() {
         >
           {/* Search */}
           <div style={{ position: "relative", flex: "1 1 320px", minWidth: 200 }}>
-            <Search size={18} style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", color: "#64748B" }} />
+            <Search size={18} style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", color: "#1976D2" }} />
             <input
               type="text"
               placeholder="Search by name, category or SKU…"
@@ -113,7 +113,7 @@ export default function Products() {
                 width: "100%",
                 padding: "16px 16px 16px 48px",
                 background: "#fff",
-                border: "2px solid #E2E8F0",
+                border: "2px solid #90CAF9",
                 fontSize: 15,
                 fontWeight: 600,
                 color: "#0D3A73",
@@ -122,7 +122,7 @@ export default function Products() {
                 transition: "border-color 0.2s",
               }}
               onFocus={(e) => { e.target.style.borderColor = "#1565C0"; }}
-              onBlur={(e) => { e.target.style.borderColor = "#E2E8F0"; }}
+              onBlur={(e) => { e.target.style.borderColor = "#90CAF9"; }}
             />
           </div>
 
@@ -134,9 +134,9 @@ export default function Products() {
                 onClick={() => { setCat(c); setCount(8); }}
                 style={{
                   padding: "16px 24px",
-                  border: cat === c ? "2px solid #0D3A73" : "2px solid #E2E8F0",
+                  border: cat === c ? "2px solid #0D3A73" : "2px solid #90CAF9",
                   background: cat === c ? "#0D3A73" : "#fff",
-                  color: cat === c ? "#fff" : "#475569",
+                  color: cat === c ? "#fff" : "#1565C0",
                   fontSize: 14,
                   fontWeight: 800,
                   textTransform: "uppercase",
@@ -146,7 +146,7 @@ export default function Products() {
                   transition: "all 0.2s",
                 }}
                 onMouseEnter={(e) => { if (cat !== c) e.currentTarget.style.borderColor = "#0D3A73"; }}
-                onMouseLeave={(e) => { if (cat !== c) e.currentTarget.style.borderColor = "#E2E8F0"; }}
+                onMouseLeave={(e) => { if (cat !== c) e.currentTarget.style.borderColor = "#90CAF9"; }}
               >
                 {c}
               </button>
@@ -155,7 +155,7 @@ export default function Products() {
         </motion.div>
 
         {/* Count */}
-        <p style={{ color: "#64748B", fontSize: 14, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 24 }}>
+        <p style={{ color: "#1976D2", fontSize: 14, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 24 }}>
           SHOWING <strong style={{ color: "#1565C0" }}>{Math.min(count, filtered.length)}</strong> OF <strong style={{ color: "#1565C0" }}>{filtered.length}</strong> PRODUCTS
         </p>
 
@@ -181,8 +181,8 @@ export default function Products() {
         </div>
 
         {filtered.length === 0 && (
-          <div style={{ textAlign: "center", padding: "80px 0", background: "#fff", border: "2px dashed #CBD5E1", marginTop: 24 }}>
-            <p style={{ color: "#475569", fontSize: 16, fontWeight: 700, textTransform: "uppercase" }}>NO PRODUCTS FOUND MATCHING YOUR SEARCH.</p>
+          <div style={{ textAlign: "center", padding: "80px 0", background: "#fff", border: "2px dashed #64B5F6", marginTop: 24 }}>
+            <p style={{ color: "#1565C0", fontSize: 16, fontWeight: 700, textTransform: "uppercase" }}>NO PRODUCTS FOUND MATCHING YOUR SEARCH.</p>
           </div>
         )}
 
@@ -248,11 +248,11 @@ export default function Products() {
                 width: "100%",
                 maxHeight: "90vh",
                 overflow: "hidden",
-                boxShadow: "0 32px 80px rgba(0,0,0,0.5)",
+                boxShadow: "0 32px 80px rgba(6,35,71,0.5)",
               }}
             >
               {/* Header */}
-              <div style={{ padding: "24px 32px", borderBottom: "2px solid #E2E8F0", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16 }}>
+              <div style={{ padding: "24px 32px", borderBottom: "2px solid #90CAF9", display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16 }}>
                 <div>
                   <span style={{
                     display: "inline-block",
@@ -268,21 +268,21 @@ export default function Products() {
                     {qv.category}
                   </span>
                   <h3 style={{ fontSize: 24, fontWeight: 900, fontStyle: "italic", color: "#0D3A73", textTransform: "uppercase", margin: 0 }}>{qv.name}</h3>
-                  <p style={{ fontSize: 13, fontWeight: 700, color: "#64748B", marginTop: 8, letterSpacing: "0.05em" }}>SKU: {qv.sku}</p>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: "#1976D2", marginTop: 8, letterSpacing: "0.05em" }}>SKU: {qv.sku}</p>
                 </div>
-                <button onClick={() => setQv(null)} style={{ background: "transparent", border: "2px solid #E2E8F0", padding: 8, cursor: "pointer", flexShrink: 0, transition: "background 0.2s" }} onMouseEnter={(e) => e.currentTarget.style.background = "#F1F5F9"} onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}>
+                <button onClick={() => setQv(null)} style={{ background: "transparent", border: "2px solid #90CAF9", padding: 8, cursor: "pointer", flexShrink: 0, transition: "background 0.2s" }} onMouseEnter={(e) => e.currentTarget.style.background = "#E0F0FF"} onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}>
                   <X size={20} color="#0D3A73" />
                 </button>
               </div>
 
               {/* Body */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr", overflowY: "auto", maxHeight: "calc(90vh - 120px)" }} className="modal-grid">
-                <div style={{ background: "#F8FAFC", position: "relative", aspectRatio: "1", borderRight: "2px solid #E2E8F0" }} className="modal-img-col">
+                <div style={{ background: "#F0F7FF", position: "relative", aspectRatio: "1", borderRight: "2px solid #90CAF9" }} className="modal-img-col">
                   <Image src={qv.image} alt={qv.name} fill style={{ objectFit: "contain", padding: 40 }} />
                 </div>
                 <div style={{ padding: 32 }}>
                   <h4 style={{ fontSize: 14, fontWeight: 900, color: "#0D3A73", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 16 }}>PRODUCT OVERVIEW</h4>
-                  <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.7, marginBottom: 32, fontWeight: 500 }}>{qv.description}</p>
+                  <p style={{ fontSize: 15, color: "#1565C0", lineHeight: 1.7, marginBottom: 32, fontWeight: 500 }}>{qv.description}</p>
                   
                   <h4 style={{ fontSize: 14, fontWeight: 900, color: "#0D3A73", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 16 }}>TECHNICAL SPECIFICATIONS</h4>
                   <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 12, marginBottom: 40 }}>
@@ -335,7 +335,7 @@ export default function Products() {
           .modal-grid { grid-template-columns: 1fr 1.2fr !important; }
         }
         @media (max-width: 767px) {
-          .modal-img-col { border-right: none !important; border-bottom: 2px solid #E2E8F0 !important; }
+          .modal-img-col { border-right: none !important; border-bottom: 2px solid #90CAF9 !important; }
           .products-section { padding: 60px 0; }
           .products-container { padding: 0 24px; }
         }
@@ -357,7 +357,7 @@ function ProductCard({ product, onQuickView, catColor }: {
       onMouseLeave={() => setHovered(false)}
       style={{
         background: "#fff",
-        border: "2px solid #E2E8F0",
+        border: "2px solid #90CAF9",
         position: "relative",
         transition: "all 0.2s ease",
         transform: hovered ? "translateY(-4px)" : "translateY(0)",
@@ -385,7 +385,7 @@ function ProductCard({ product, onQuickView, catColor }: {
       </div>
 
       {/* Image */}
-      <div style={{ position: "relative", aspectRatio: "1", background: "#fff", borderBottom: "2px solid #E2E8F0", overflow: "hidden" }}>
+      <div style={{ position: "relative", aspectRatio: "1", background: "#fff", borderBottom: "2px solid #90CAF9", overflow: "hidden" }}>
         <Image
           src={product.image}
           alt={product.name}
@@ -445,7 +445,7 @@ function ProductCard({ product, onQuickView, catColor }: {
 
       {/* Info */}
       <div style={{ padding: "20px", flex: 1, display: "flex", flexDirection: "column" }}>
-        <p style={{ fontSize: 12, fontWeight: 700, color: "#64748B", letterSpacing: "0.05em", marginBottom: 8 }}>SKU: {product.sku}</p>
+        <p style={{ fontSize: 12, fontWeight: 700, color: "#1976D2", letterSpacing: "0.05em", marginBottom: 8 }}>SKU: {product.sku}</p>
         <h3 style={{ fontSize: 16, fontWeight: 900, fontStyle: "italic", color: "#0D3A73", textTransform: "uppercase", lineHeight: 1.3, marginBottom: 20, flex: 1 }}>
           {product.name}
         </h3>
@@ -456,7 +456,7 @@ function ProductCard({ product, onQuickView, catColor }: {
             padding: "12px",
             background: "transparent",
             color: "#0D3A73",
-            border: "2px solid #E2E8F0",
+            border: "2px solid #90CAF9",
             fontSize: 14,
             fontWeight: 800,
             textTransform: "uppercase",
@@ -466,7 +466,7 @@ function ProductCard({ product, onQuickView, catColor }: {
             transition: "all 0.2s",
           }}
           onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#1565C0"; e.currentTarget.style.color = "#1565C0"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.color = "#0D3A73"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#90CAF9"; e.currentTarget.style.color = "#0D3A73"; }}
         >
           VIEW DETAILS
         </button>
