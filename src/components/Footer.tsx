@@ -76,18 +76,29 @@ export default function Footer() {
 
       {/* Band 2: Contact Info */}
       <div style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "24px 60px", display: "flex", flexWrap: "wrap", alignItems: "center", gap: 48 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <span style={{ fontSize: 13, fontWeight: 900, color: "#fff", textTransform: "uppercase", letterSpacing: "0.05em" }}>GLOBAL HEADQUARTERS:</span>
-            <span style={{ fontSize: 14, fontWeight: 500 }}>Sydney, Australia</span>
+        <div style={{ maxWidth: 1440, margin: "0 auto", padding: "24px 60px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 32 }}>
+          {/* USA Office */}
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 24 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <MapPin size={16} color="#2196F3" />
+              <span style={{ fontSize: 13, fontWeight: 500, color: "#fff", textTransform: "uppercase" }}>105 MAXES ROAD, MELVILLE, NY 11737, USA</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <Phone size={16} color="#2196F3" />
+              <span style={{ fontSize: 13, fontWeight: 500 }}>+1 (512) 782-8880</span>
+            </div>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <Phone size={16} color="#2196F3" />
-            <span style={{ fontSize: 14, fontWeight: 500 }}>+61 2 1234 5678</span>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <Mail size={16} color="#2196F3" />
-            <span style={{ fontSize: 14, fontWeight: 500 }}>info@h2industries.com.au</span>
+          
+          {/* Canada Office */}
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 24 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <MapPin size={16} color="#2196F3" />
+              <span style={{ fontSize: 13, fontWeight: 500, color: "#fff", textTransform: "uppercase" }}>ONE YOUNGE STREET, TORONTO, ONTARIO M5E 1R4 CANADA</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <Phone size={16} color="#2196F3" />
+              <span style={{ fontSize: 13, fontWeight: 500 }}>+1 (438) 805-9990</span>
+            </div>
           </div>
         </div>
       </div>
