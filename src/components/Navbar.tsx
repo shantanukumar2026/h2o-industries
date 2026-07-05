@@ -10,7 +10,6 @@ const topLinks = [
   { label: "Our Values", href: "#values", icon: User },
   { label: "Locations", href: "#locations", icon: MapPin },
   { label: "Contact", href: "#contact", icon: Mail },
-  { label: "Quote", href: "#quote", icon: FileText },
 ];
 
 const mainLinks = [
@@ -174,6 +173,29 @@ export default function Navbar() {
 
             {/* Top Right Group (Desktop) */}
             <div className="top-links" style={{ display: "none", alignItems: "center", gap: 32 }}>
+              {/* Language Selector (First) */}
+              <button
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                  background: "rgba(255,255,255,0.1)",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  padding: "8px 12px",
+                  borderRadius: "4px",
+                  color: "#fff",
+                  fontSize: 12,
+                  fontWeight: 800,
+                  cursor: "pointer",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.1)")}
+              >
+                <Globe size={14} />
+                EN
+              </button>
+
               <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
                 {topLinks.map((link) => {
                   const Icon = link.icon;
@@ -206,57 +228,6 @@ export default function Navbar() {
                   );
                 })}
               </div>
-              
-              {/* Search Bar (Top) */}
-              <div style={{ position: "relative", width: 260 }}>
-                <Search size={16} color="#fff" style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", opacity: 0.7 }} />
-                <input
-                  type="text"
-                  placeholder="Search resources..."
-                  style={{
-                    width: "100%",
-                    padding: "8px 16px 8px 40px",
-                    background: "rgba(255,255,255,0.1)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    borderRadius: 999,
-                    fontSize: 13,
-                    color: "#fff",
-                    outline: "none",
-                    fontFamily: "inherit",
-                    transition: "all 0.2s"
-                  }}
-                  onFocus={(e) => {
-                    e.target.style.background = "rgba(255,255,255,0.2)";
-                    e.target.style.borderColor = "rgba(255,255,255,0.4)";
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.background = "rgba(255,255,255,0.1)";
-                    e.target.style.borderColor = "rgba(255,255,255,0.2)";
-                  }}
-                />
-              </div>
-              {/* Language Selector */}
-              <button
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                  background: "rgba(255,255,255,0.1)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  padding: "8px 12px",
-                  borderRadius: "4px",
-                  color: "#fff",
-                  fontSize: 12,
-                  fontWeight: 800,
-                  cursor: "pointer",
-                  transition: "background 0.2s",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.2)")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.1)")}
-              >
-                <Globe size={14} />
-                EN
-              </button>
             </div>
 
             {/* Mobile Hamburger */}
@@ -291,8 +262,8 @@ export default function Navbar() {
               height: 56,
             }}
           >
-            {/* Main Links (Centered) */}
-            <nav style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 60, width: "100%", height: "100%" }}>
+            {/* Main Links */}
+            <nav style={{ display: "flex", alignItems: "center", gap: 40, height: "100%" }}>
               {mainLinks.map((link) => (
                 <div
                   key={link.label}
@@ -344,6 +315,45 @@ export default function Navbar() {
                 </div>
               ))}
             </nav>
+
+            {/* Search Bar */}
+            <div
+              style={{
+                position: "relative",
+                width: 320,
+              }}
+            >
+              <Search
+                size={18}
+                color="#8898AA"
+                style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)" }}
+              />
+              <input
+                type="text"
+                placeholder="Search resources..."
+                style={{
+                  width: "100%",
+                  padding: "10px 16px 10px 44px",
+                  background: "rgba(240, 247, 255, 0.8)",
+                  border: "1px solid rgba(100, 181, 246, 0.5)",
+                  borderRadius: 4,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: "#0D3A73",
+                  fontFamily: "inherit",
+                  outline: "none",
+                  transition: "border-color 0.2s, background 0.2s",
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#1565C0";
+                  e.target.style.background = "#fff";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "rgba(100, 181, 246, 0.5)";
+                  e.target.style.background = "rgba(240, 247, 255, 0.8)";
+                }}
+              />
+            </div>
           </div>
 
           {/* MEGAMENU DROPDOWN */}
