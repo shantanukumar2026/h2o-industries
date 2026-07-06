@@ -106,6 +106,14 @@ export default function About() {
               Today, H2 Industries engineers and manufactures a comprehensive range of water sampling stations, modular enclosures, and precision drainage infrastructure — all designed from the ground up to protect our waterways and oceans.
             </p>
 
+            <p style={{ color: "#1565C0", fontSize: 16, lineHeight: 1.8, marginBottom: 24, fontWeight: 700 }}>
+              With over a decade of engineering and manufacturing experience, H2 Industries delivers field-tested solutions across municipal, industrial and marine sectors. Our team combines practical field knowledge, advanced materials selection, and rigorous quality control to produce reliable products that meet regulatory requirements and perform in the toughest environments.
+            </p>
+
+            <p style={{ color: "#1565C0", fontSize: 15, lineHeight: 1.7, marginBottom: 32, fontWeight: 500 }}>
+              Industry snapshot: low-emission fuels, electrolyser deployments, and resilient coastal infrastructure are driving new requirements for industrial systems. We design for compatibility with emerging hydrogen and clean-energy projects, and for long-term protection of waterways as regulations and project priorities evolve.
+            </p>
+
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
               <a
                 href="#products"
