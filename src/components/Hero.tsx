@@ -53,10 +53,9 @@ export default function Hero() {
         style={{
           position: "relative",
           zIndex: 10,
-          maxWidth: 1600,
+          width: "100%",
           margin: "0 auto",
           padding: "0 60px",
-          width: "100%",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",

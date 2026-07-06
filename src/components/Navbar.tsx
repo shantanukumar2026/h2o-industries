@@ -128,9 +128,9 @@ export default function Navbar() {
         >
           <div
             style={{
-              maxWidth: 1600,
+              width: "100%",
               margin: "0 auto",
-              padding: "0 24px",
+              padding: "0 60px",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -260,9 +260,9 @@ export default function Navbar() {
         <div className="bottom-bar" style={{ display: "none", borderBottom: "1px solid #90CAF9", position: "relative", background: "#fff" }}>
           <div
             style={{
-              maxWidth: 1600,
+              width: "100%",
               margin: "0 auto",
-              padding: "0 24px",
+              padding: "0 60px",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
@@ -386,7 +386,7 @@ export default function Navbar() {
                 {mainLinks.map(
                   (link) =>
                     activeSubmenu === link.label && (
-                      <div key={link.label} style={{ maxWidth: 1600, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr" }}>
+                      <div key={link.label} style={{ width: "100%", padding: "0 60px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr" }}>
                         
                         {/* Megamenu Left: Featured Image Block */}
                         <motion.div
