@@ -31,14 +31,14 @@ export default function ProductDetailPage() {
 
   if (!product) {
     return (
-      <main style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#F0F7FF" }}>
+      <main style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#F5F7FA" }}>
         <Navbar />
         <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", paddingTop: 120 }}>
-          <h2 style={{ color: "#0D3A73", fontWeight: 900, marginBottom: 16 }}>PRODUCT NOT FOUND</h2>
+          <h2 style={{ color: "#062347", fontWeight: 900, marginBottom: 16 }}>PRODUCT NOT FOUND</h2>
           <button
             onClick={() => router.push("/products")}
             style={{
-              background: "#1565C0",
+              background: "#2196F3",
               color: "#fff",
               border: "none",
               padding: "16px 32px",
@@ -57,7 +57,7 @@ export default function ProductDetailPage() {
   }
 
   return (
-    <main style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#F0F7FF" }}>
+    <main style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#F5F7FA" }}>
       <Navbar />
 
       <div style={{ paddingTop: 140, paddingBottom: 100, flex: 1 }}>
@@ -82,15 +82,15 @@ export default function ProductDetailPage() {
             }}
             className="detail-grid"
           >
-            {/* Left Column: Premium Image Showcase */}
+            {/* Left Column: Premium Dark Image Showcase */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               style={{
-                background: "#fff",
-                border: "2px solid #90CAF9",
-                boxShadow: "12px 12px 0px rgba(11,25,41,1)",
+                background: "#050d1c",
+                border: "1px solid #0D3A73",
+                boxShadow: "0 32px 80px rgba(6,35,71,0.15)",
                 aspectRatio: "1.1",
                 position: "relative",
                 display: "flex",
@@ -99,19 +99,24 @@ export default function ProductDetailPage() {
                 padding: 48,
               }}
             >
-              <div style={{ position: "relative", width: "100%", height: "100%" }}>
+              <div style={{ position: "absolute", top: 0, left: 0, width: 40, height: 40, borderTop: "2px solid #2196F3", borderLeft: "2px solid #2196F3" }} />
+              <div style={{ position: "absolute", bottom: 0, right: 0, width: 40, height: 40, borderBottom: "2px solid #2196F3", borderRight: "2px solid #2196F3" }} />
+              {/* Blueprint Grid */}
+              <div style={{ position: "absolute", inset: 0, opacity: 0.15, backgroundImage: "linear-gradient(rgba(33, 150, 243, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(33, 150, 243, 0.5) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+
+              <div style={{ position: "relative", width: "100%", height: "100%", zIndex: 2 }}>
                 <Image
                   src={product.image}
                   alt={product.name}
                   fill
-                  style={{ objectFit: "contain" }}
+                  style={{ objectFit: "contain", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.8))" }}
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />
               </div>
             </motion.div>
 
-            {/* Right Column: Spec Sheet & Quote Request */}
+            {/* Right Column: Spec Sheet & Quote Request (Light mode) */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -124,7 +129,7 @@ export default function ProductDetailPage() {
                   style={{
                     display: "inline-block",
                     padding: "6px 14px",
-                    background: "#1565C0",
+                    background: "#0D3A73",
                     color: "#fff",
                     fontSize: 11,
                     fontWeight: 800,
@@ -142,7 +147,7 @@ export default function ProductDetailPage() {
                     fontSize: "clamp(2rem, 5vw, 3.5rem)",
                     fontWeight: 900,
                     fontStyle: "italic",
-                    color: "#0D3A73",
+                    color: "#062347",
                     textTransform: "uppercase",
                     lineHeight: 1.1,
                     marginBottom: 12,
@@ -151,20 +156,20 @@ export default function ProductDetailPage() {
                   {product.name}
                 </h1>
                 
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#1976D2", letterSpacing: "0.05em", margin: 0 }}>
+                <p style={{ fontSize: 14, fontWeight: 700, color: "#1976D2", letterSpacing: "0.05em", margin: 0, fontFamily: "monospace" }}>
                   SKU / SERIAL CODE: {product.sku}
                 </p>
               </div>
 
               {/* Blue Divider */}
-              <div style={{ width: 80, height: 4, background: "#1565C0" }} />
+              <div style={{ width: 80, height: 4, background: "#2196F3" }} />
 
               {/* Description */}
               <div>
                 <h4 style={{ fontSize: 13, fontWeight: 900, color: "#0D3A73", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>
                   Product Overview
                 </h4>
-                <p style={{ fontSize: 16, color: "#1565C0", lineHeight: 1.7, fontWeight: 500, margin: 0 }}>
+                <p style={{ fontSize: 16, color: "#37474F", lineHeight: 1.7, fontWeight: 500, margin: 0 }}>
                   {product.description}
                 </p>
               </div>
@@ -176,8 +181,8 @@ export default function ProductDetailPage() {
                 </h4>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }}>
                   {product.features.map((feat) => (
-                    <li key={feat} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 15, color: "#0D3A73", fontWeight: 600 }}>
-                      <div style={{ width: 22, height: 22, background: "rgba(21,101,192,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
+                    <li key={feat} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 15, color: "#062347", fontWeight: 600 }}>
+                      <div style={{ width: 22, height: 22, background: "rgba(33, 150, 243, 0.1)", border: "1px solid rgba(33, 150, 243, 0.3)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
                         <Check size={14} color="#1565C0" strokeWidth={3} />
                       </div>
                       {feat}
@@ -186,12 +191,12 @@ export default function ProductDetailPage() {
                 </ul>
               </div>
 
-              {/* Price & Action Box */}
+              {/* Price & Action Box (Crisp white contrast box) */}
               <div
                 style={{
                   background: "#fff",
-                  border: "2px solid #90CAF9",
-                  boxShadow: "8px 8px 0px rgba(11,25,41,0.08)",
+                  border: "1px solid #E0E0E0",
+                  boxShadow: "0 12px 32px rgba(6,35,71,0.06)",
                   padding: 32,
                   marginTop: 16,
                   display: "flex",
@@ -204,19 +209,19 @@ export default function ProductDetailPage() {
                     ESTIMATED MARKET PRICE
                   </span>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
-                    <span style={{ fontSize: 36, fontWeight: 900, color: "#0D3A73", fontFamily: "var(--font-barlow), sans-serif", fontStyle: "italic" }}>
+                    <span style={{ fontSize: 36, fontWeight: 900, color: "#062347", fontFamily: "var(--font-barlow), sans-serif", fontStyle: "italic" }}>
                       {product.price}
                     </span>
                     <span style={{ fontSize: 14, fontWeight: 700, color: "#1976D2" }}>
                       USD
                     </span>
                   </div>
-                  <span style={{ fontSize: 12, color: "#4A6375", fontWeight: 600, display: "block", marginTop: 8 }}>
+                  <span style={{ fontSize: 12, color: "#78909C", fontWeight: 600, display: "block", marginTop: 8 }}>
                     * Heavy industry contract pricing options available upon inquiry.
                   </span>
                 </div>
 
-                <div style={{ width: "100%", height: "1px", background: "#90CAF9" }} />
+                <div style={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
 
                 <button
                   style={{
@@ -242,13 +247,13 @@ export default function ProductDetailPage() {
                   PLACE ORDER
                 </button>
 
-                <div style={{ width: "100%", height: "1px", background: "#90CAF9" }} />
+                <div style={{ width: "100%", height: "1px", background: "#E0E0E0" }} />
 
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <h4 style={{ fontSize: 14, fontWeight: 900, color: "#0D3A73", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>
                     Need a Quote?
                   </h4>
-                  <p style={{ fontSize: 13, color: "#1565C0", fontWeight: 500, margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: 13, color: "#37474F", fontWeight: 500, margin: 0, lineHeight: 1.5 }}>
                     Custom dimensions and volume pricing available for major projects.
                   </p>
                   <button
@@ -257,8 +262,8 @@ export default function ProductDetailPage() {
                     }}
                     style={{
                       background: "transparent",
-                      color: "#0D3A73",
-                      border: "2px solid #90CAF9",
+                      color: "#1565C0",
+                      border: "1px solid rgba(21,101,192,0.3)",
                       padding: "12px",
                       fontSize: 13,
                       fontWeight: 800,
@@ -269,8 +274,8 @@ export default function ProductDetailPage() {
                       marginTop: 8,
                       transition: "all 0.2s",
                     }}
-                    onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#1565C0"; e.currentTarget.style.color = "#1565C0"; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#90CAF9"; e.currentTarget.style.color = "#0D3A73"; }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(21,101,192,0.05)"; e.currentTarget.style.borderColor = "#1565C0"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(21,101,192,0.3)"; }}
                   >
                     Request More Info
                   </button>
@@ -304,15 +309,3 @@ export default function ProductDetailPage() {
     </main>
   );
 }
-
-const inputStyle: React.CSSProperties = {
-  width: "100%",
-  padding: "14px 16px",
-  background: "#F5F7FA",
-  border: "2px solid #E2E8F0",
-  fontSize: 14,
-  fontWeight: 600,
-  color: "#0D3A73",
-  outline: "none",
-  transition: "border-color 0.2s, background 0.2s",
-};

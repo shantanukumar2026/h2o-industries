@@ -6,19 +6,19 @@ import Image from "next/image";
 
 const footerLinks = {
   COMPANY: [
-    { label: "Careers", href: "#careers" },
-    { label: "About Us", href: "#about" },
-    { label: "Projects", href: "#projects" },
+    { label: "Careers", href: "/company#careers" },
+    { label: "About Us", href: "/company" },
+    { label: "Capabilities", href: "/capabilities" },
   ],
   "PRODUCTS & SERVICES": [
-    { label: "Sampling Stations", href: "#products" },
-    { label: "Drainage Infrastructure", href: "#products" },
-    { label: "Engineering Services", href: "#services" },
+    { label: "View All Products", href: "/products" },
+    { label: "Quality Standards", href: "/quality" },
+    { label: "Technical Docs", href: "/quality#standards" },
   ],
   INDUSTRIES: [
-    { label: "Municipal Water", href: "#industries" },
-    { label: "Marine & Coastal", href: "#industries" },
-    { label: "Civil Infrastructure", href: "#industries" },
+    { label: "Municipal Water", href: "/industries" },
+    { label: "Marine & Coastal", href: "/industries" },
+    { label: "Civil Infrastructure", href: "/industries" },
   ],
 };
 

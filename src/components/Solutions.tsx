@@ -1,227 +1,225 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { ArrowRight, Settings, Maximize, Activity } from "lucide-react";
 
 const solutions = [
   {
-    num: "01",
+    id: "stormwater",
+    title: "Precision-Engineered Drainage",
+    category: "Stormwater Infrastructure",
+    desc: "Machined to exacting tolerances, delivering consistent performance in municipal and civil stormwater infrastructure. Features a segmented barrel system for adaptable depth configurations.",
+    specs: { material: "High-Grade Aluminium", rating: "Municipal Class D", tolerance: "±0.1mm" },
     image: "/images/4.jpeg",
-    tag: "Stormwater Infrastructure",
-    title: "Precision-Engineered Drainage Systems",
-    desc: "H2 Industries aluminium inlet drains are machined to exacting tolerances, delivering consistent performance in municipal and civil stormwater infrastructure. Each unit features a segmented barrel system for adaptable depth configurations, topped with a secure branded cap.",
-    points: ["Modular barrel sections for variable depths", "High-grade aluminium construction", "Secure screw-fit cap system", "Municipal and civil project rated"],
-    reversed: false,
+    icon: Settings
   },
   {
-    num: "02",
+    id: "monitoring",
+    title: "Modular Sampling Stations",
+    category: "Water Quality Monitoring",
+    desc: "A secure access platform for environmental engineers. The flat-panel dual-door design provides full interior visibility and accommodates complex probe assemblies.",
+    specs: { material: "Industrial Polymer", rating: "IP67 Enclosure", tolerance: "N/A" },
     image: "/images/9.jpeg",
-    tag: "Water Quality Monitoring",
-    title: "Modular Sampling Station Systems",
-    desc: "Our sampling station platform gives environmental engineers and council inspectors reliable, secure access to stormwater sampling points. The flat-panel dual-door design provides full interior visibility and accommodates a range of probe and valve assemblies.",
-    points: ["Dual-door full-access panel", "Top and bottom probe pass-throughs", "Configurable valve mounting", "Environmental monitoring grade"],
-    reversed: true,
+    icon: Activity
   },
   {
-    num: "03",
-    image: "/images/5.jpeg",
-    tag: "Urban Water Management",
+    id: "urban",
     title: "Black Series Column Drainage",
-    desc: "The H2 Black Series polymer column drain was designed for urban environments where durability and aesthetics both matter. A stabilising foot plate ensures secure installation in road and kerb applications, while the matte black finish blends with modern urban infrastructure.",
-    points: ["HDPE moulded for longevity", "Integrated stabilising foot plate", "Removable branded top cap", "Road and kerb installation ready"],
-    reversed: false,
-  },
+    category: "Urban Water Management",
+    desc: "Designed for urban environments demanding durability and aesthetics. Features an integrated stabilising foot plate for secure road and kerb installations.",
+    specs: { material: "HDPE Moulded", rating: "Heavy Duty", tolerance: "N/A" },
+    image: "/images/5.jpeg",
+    icon: Maximize
+  }
 ];
 
 export default function Solutions() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [activeTab, setActiveTab] = useState(solutions[0].id);
+
+  const activeSolution = solutions.find(s => s.id === activeTab) || solutions[0];
 
   return (
-    <section id="solutions" className="section-pad" style={{ background: "#fff" }}>
-      <div style={{ maxWidth: 1720, margin: "0 auto", padding: "0 60px" }}>
+    <section id="solutions" style={{ background: "#050d1c", padding: "120px 0", position: "relative", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      {/* Background blueprint grid */}
+      <div style={{ position: "absolute", inset: 0, opacity: 0.1, backgroundImage: "linear-gradient(rgba(33, 150, 243, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(33, 150, 243, 0.2) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+
+      <div style={{ maxWidth: 1720, margin: "0 auto", padding: "0 60px", position: "relative", zIndex: 10 }}>
+        
         {/* Header */}
-        <div ref={ref} style={{ textAlign: "center", marginBottom: 80 }}>
+        <div ref={ref} style={{ marginBottom: 60, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-            <div className="pill-tag" style={{ marginBottom: 20, display: "inline-flex" }}>
-              <span className="dot" /> Featured Solutions
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(33, 150, 243, 0.1)", border: "1px solid rgba(33, 150, 243, 0.3)", padding: "6px 16px", marginBottom: 24 }}>
+              <span style={{ color: "#90CAF9", fontSize: 12, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                Products In Action
+              </span>
             </div>
-            <h2
-              className="font-display"
-              style={{ fontSize: "clamp(1.8rem, 8vw, 3.2rem)", fontWeight: 900, color: "#0D3A73", lineHeight: 1.0, textTransform: "uppercase" }}
-            >
-              Engineering Solutions<br />
-              <span style={{ color: "#1565C0" }}>For Every Application</span>
+            
+            <h2 className="font-display" style={{ fontSize: "clamp(2rem, 6vw, 3.8rem)", fontWeight: 900, color: "#fff", lineHeight: 1.1, textTransform: "uppercase", fontStyle: "italic" }}>
+              ENGINEERING SOLUTIONS<br />
+              <span style={{ color: "#2196F3" }}>
+                FOR EVERY APPLICATION
+              </span>
             </h2>
           </motion.div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 100 }}>
-          {solutions.map((sol, i) => (
-            <SolutionRow key={sol.num} sol={sol} index={i} />
-          ))}
+        <div style={{ display: "flex", gap: 60, flexDirection: "row" }} className="solutions-layout">
+          
+          {/* Left: Interactive Tabs */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }} 
+            animate={inView ? { opacity: 1, x: 0 } : {}} 
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ flex: "0 0 400px", display: "flex", flexDirection: "column", gap: 16 }}
+            className="solutions-tabs"
+          >
+            {solutions.map((sol) => {
+              const isActive = activeTab === sol.id;
+              const Icon = sol.icon;
+              return (
+                <button
+                  key={sol.id}
+                  onClick={() => setActiveTab(sol.id)}
+                  style={{
+                    textAlign: "left",
+                    background: isActive ? "rgba(33, 150, 243, 0.1)" : "rgba(255, 255, 255, 0.02)",
+                    border: "1px solid",
+                    borderColor: isActive ? "rgba(33, 150, 243, 0.5)" : "rgba(255, 255, 255, 0.05)",
+                    padding: "24px",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    transition: "all 0.3s ease",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 16,
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.background = "rgba(255, 255, 255, 0.05)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.background = "rgba(255, 255, 255, 0.02)";
+                    }
+                  }}
+                >
+                  <div style={{ width: 40, height: 40, background: isActive ? "#1565C0" : "rgba(255,255,255,0.05)", borderRadius: "4px", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.3s" }}>
+                    <Icon size={20} color={isActive ? "#fff" : "#90CAF9"} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 11, fontWeight: 800, color: isActive ? "#42A5F5" : "#64B5F6", textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>
+                      {sol.category}
+                    </div>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>
+                      {sol.title}
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </motion.div>
+
+          {/* Right: Dynamic Display */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }} 
+            animate={inView ? { opacity: 1, scale: 1 } : {}} 
+            transition={{ duration: 0.6, delay: 0.4 }}
+            style={{ flex: 1, position: "relative", minHeight: 600, background: "#06152a", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.05)", overflow: "hidden" }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeSolution.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+                style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column" }}
+              >
+                {/* Tech Header */}
+                <div style={{ padding: "24px 40px", borderBottom: "1px solid rgba(255,255,255,0.05)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <div style={{ display: "flex", gap: 24 }}>
+                    {Object.entries(activeSolution.specs).map(([key, val]) => (
+                      <div key={key}>
+                        <div style={{ fontSize: 10, color: "#64B5F6", textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>{key}</div>
+                        <div style={{ fontSize: 14, color: "#fff", fontWeight: 600 }}>{val}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ fontSize: 12, color: "#42A5F5", fontWeight: 800, letterSpacing: 2, textTransform: "uppercase" }}>
+                    SYS-0{solutions.findIndex(s => s.id === activeTab) + 1}
+                  </div>
+                </div>
+
+                <div style={{ flex: 1, display: "flex" }} className="solution-content-split">
+                  {/* Info Box */}
+                  <div style={{ flex: 1, padding: 40, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                    <h3 style={{ fontSize: 32, fontWeight: 900, color: "#fff", textTransform: "uppercase", marginBottom: 24, fontStyle: "italic", lineHeight: 1.1 }}>
+                      {activeSolution.title}
+                    </h3>
+                    <p style={{ fontSize: 16, color: "#90CAF9", lineHeight: 1.7, marginBottom: 40 }}>
+                      {activeSolution.desc}
+                    </p>
+                    <button style={{ 
+                      alignSelf: "flex-start",
+                      display: "inline-flex", 
+                      alignItems: "center", 
+                      gap: 8, 
+                      background: "#2196F3", 
+                      color: "#fff", 
+                      padding: "14px 28px", 
+                      fontSize: 14, 
+                      fontWeight: 800, 
+                      textTransform: "uppercase", 
+                      border: "none",
+                      borderRadius: "4px",
+                      cursor: "pointer",
+                      transition: "background 0.2s"
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = "#1E88E5"}
+                    onMouseLeave={(e) => e.currentTarget.style.background = "#2196F3"}
+                    >
+                      View Technical Specs <ArrowRight size={16} />
+                    </button>
+                  </div>
+                  
+                  {/* Image Display */}
+                  <div style={{ flex: 1, position: "relative", background: "rgba(255,255,255,0.02)", borderLeft: "1px solid rgba(255,255,255,0.05)" }}>
+                    {/* CAD-like overlay on image */}
+                    <div style={{ position: "absolute", top: 20, right: 20, zIndex: 10 }}>
+                      <div style={{ width: 40, height: 40, border: "2px solid rgba(33, 150, 243, 0.3)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <div style={{ width: 4, height: 4, background: "#2196F3", borderRadius: "50%" }} />
+                      </div>
+                    </div>
+                    <Image 
+                      src={activeSolution.image} 
+                      alt={activeSolution.title} 
+                      fill 
+                      style={{ objectFit: "contain", padding: 40, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" }} 
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
+
         </div>
       </div>
-    </section>
-  );
-}
-
-function SolutionRow({ sol, index }: { sol: typeof solutions[0]; index: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
-  return (
-    <div ref={ref}>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr",
-          gap: 56,
-          alignItems: "center",
-        }}
-        className={`sol-grid ${sol.reversed ? "sol-reversed" : ""}`}
-      >
-        {/* Image */}
-        <motion.div
-          initial={{ opacity: 0, x: sol.reversed ? 50 : -50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-          style={{ position: "relative", order: sol.reversed ? 2 : 1 }}
-          className="sol-img-order"
-        >
-          <div style={{
-            position: "relative",
-            borderRadius: 20,
-            overflow: "hidden",
-            background: "#F5F7FA",
-            aspectRatio: "1 / 1",
-            boxShadow: "0 24px 80px rgba(21,101,192,0.12)",
-          }}>
-            <Image
-              src={sol.image}
-              alt={sol.title}
-              fill
-              style={{ objectFit: "contain", padding: 40, transition: "transform 0.7s ease" }}
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="sol-img"
-            />
-            {/* Tag overlay */}
-            <div style={{
-              position: "absolute",
-              top: 16,
-              left: 16,
-              background: "#1565C0",
-              color: "#fff",
-              padding: "6px 14px",
-              borderRadius: 999,
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.07em",
-              textTransform: "uppercase",
-            }}>
-              {sol.tag}
-            </div>
-          </div>
-          {/* Number watermark */}
-          <div
-            className="font-display"
-            style={{
-              position: "absolute",
-              bottom: -24,
-              right: sol.reversed ? "auto" : -24,
-              left: sol.reversed ? -24 : "auto",
-              fontSize: 120,
-              fontWeight: 900,
-              color: "rgba(21,101,192,0.06)",
-              lineHeight: 1,
-              pointerEvents: "none",
-              userSelect: "none",
-            }}
-          >
-            {sol.num}
-          </div>
-        </motion.div>
-
-        {/* Content */}
-        <motion.div
-          initial={{ opacity: 0, x: sol.reversed ? -50 : 50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.72, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          style={{ order: sol.reversed ? 1 : 2 }}
-          className="sol-content-order"
-        >
-          <h3
-            className="font-display"
-            style={{
-              fontSize: "clamp(1.5rem, 6vw, 2.6rem)",
-              fontWeight: 900,
-              color: "#0D3A73",
-              lineHeight: 1.05,
-              marginBottom: 20,
-              textTransform: "uppercase",
-            }}
-          >
-            {sol.title}
-          </h3>
-          <p style={{ fontSize: 16, color: "#4A6375", lineHeight: 1.75, marginBottom: 28 }}>
-            {sol.desc}
-          </p>
-          <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 12, marginBottom: 32 }}>
-            {sol.points.map((pt) => (
-              <li key={pt} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                <div style={{
-                  width: 22,
-                  height: 22,
-                  borderRadius: "50%",
-                  background: "rgba(21,101,192,0.1)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                  marginTop: 2,
-                }}>
-                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#1565C0" }} />
-                </div>
-                <span style={{ fontSize: 15, color: "#0D3A73", fontWeight: 500 }}>{pt}</span>
-              </li>
-            ))}
-          </ul>
-          <button
-            onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              background: "#1565C0",
-              color: "#fff",
-              border: "none",
-              borderRadius: 10,
-              padding: "13px 24px",
-              fontSize: 14,
-              fontWeight: 700,
-              cursor: "pointer",
-              fontFamily: "inherit",
-              boxShadow: "0 4px 20px rgba(21,101,192,0.3)",
-              transition: "all 0.2s",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "#0D47A1"; e.currentTarget.style.transform = "translateY(-1px)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "#1565C0"; e.currentTarget.style.transform = "translateY(0)"; }}
-          >
-            Learn More <ArrowRight size={15} />
-          </button>
-        </motion.div>
-      </div>
-
       <style>{`
-        .sol-img:hover { transform: scale(1.04) !important; }
-        @media (min-width: 1024px) {
-          .sol-grid { grid-template-columns: 1fr 1fr !important; }
-          .sol-reversed .sol-img-order { order: 2 !important; }
-          .sol-reversed .sol-content-order { order: 1 !important; }
+        @media (max-width: 1024px) {
+          .solutions-layout { flex-direction: column !important; }
+          .solutions-tabs { flex: none !important; display: grid !important; grid-template-columns: 1fr 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+          .solutions-tabs { grid-template-columns: 1fr; }
+          .solution-content-split { flex-direction: column !important; }
+          .solution-content-split > div:last-child { min-height: 400px; border-left: none !important; border-top: 1px solid rgba(255,255,255,0.05); }
         }
       `}</style>
-    </div>
+    </section>
   );
 }

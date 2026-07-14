@@ -99,22 +99,22 @@ export default function Hero() {
           <h1
             className="font-display"
             style={{
-              fontSize: "clamp(2rem, 8vw, 4.5rem)",
+              fontSize: "clamp(2rem, 8vw, 4.8rem)",
               fontWeight: 900,
-              lineHeight: 1,
+              lineHeight: 1.05,
               color: "#fff",
               textTransform: "uppercase",
               fontStyle: "italic",
               letterSpacing: "0.02em",
-              textShadow: "0 4px 12px rgba(6,35,71,0.3)",
-              margin: "12px 0",
+              textShadow: "0 10px 30px rgba(0,0,0,0.5)",
+              margin: "16px 0",
             }}
           >
             ENGINEERING THE
             <br />
             WATERWORKS
             <br />
-            <span style={{ color: "#42A5F5" }}>AUTHORITY...</span>
+            <span style={{ color: "#42A5F5" }}>AUTHORITY</span>
           </h1>
 
           {/* Sub block */}
@@ -153,14 +153,14 @@ export default function Hero() {
             alignItems: "stretch",
             gap: 16,
             marginRight: 60, // Space for the side bar
-            background: "rgba(6, 35, 71, 0.6)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            border: "1px solid rgba(144, 202, 249, 0.2)",
+            background: "rgba(5, 13, 28, 0.8)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
+            border: "1px solid rgba(33, 150, 243, 0.3)",
+            borderTop: "4px solid #2196F3",
             padding: "32px",
-            borderRadius: "16px",
             width: "380px",
-            boxShadow: "0 20px 40px rgba(6,35,71,0.4)",
+            boxShadow: "0 24px 48px rgba(0,0,0,0.6)",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8, borderBottom: "1px solid rgba(144, 202, 249, 0.2)", paddingBottom: 16 }}>

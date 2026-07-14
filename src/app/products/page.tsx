@@ -9,7 +9,7 @@ export default function ProductsPage() {
   const router = useRouter();
 
   return (
-    <main style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#F0F7FF" }}>
+    <main style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#F8FAFC" }}>
       <Navbar />
       <div style={{ paddingTop: 140, flex: 1 }}>
         <div style={{ maxWidth: 1720, margin: "0 auto", padding: "0 60px", marginBottom: 16 }}>

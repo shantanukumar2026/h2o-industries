@@ -35,8 +35,24 @@ const mainLinks = [
     },
   },
   {
+    label: "Capabilities",
+    href: "/capabilities",
+    mega: {
+      image: "/images/5.jpeg",
+      title: "MANUFACTURING EXCELLENCE",
+      desc: "From advanced polymer injection moulding to custom heavy industrial fabrication.",
+      link: "Our Capabilities",
+      columns: [
+        {
+          title: "PRODUCTION",
+          items: ["Injection Moulding", "Industrial Fabrication", "Precision Machining", "Custom Engineering"],
+        },
+      ],
+    },
+  },
+  {
     label: "Industries",
-    href: "#industries",
+    href: "/industries",
     mega: {
       image: "/images/7.jpeg",
       title: "GLOBAL DEPLOYMENT",
@@ -55,33 +71,33 @@ const mainLinks = [
     },
   },
   {
-    label: "Solutions",
-    href: "#solutions",
+    label: "Quality",
+    href: "/quality",
     mega: {
-      image: "/images/5.jpeg",
-      title: "END-TO-END ENGINEERING",
-      desc: "From concept to deployment, we engineer success.",
-      link: "Our Solutions",
+      image: "/images/3.jpeg",
+      title: "ZERO COMPROMISE",
+      desc: "Stringent quality control protocols exceeding international engineering standards.",
+      link: "View Standards",
       columns: [
         {
-          title: "SERVICES",
-          items: ["Turnkey Installations", "Custom Engineering", "Site Assessments", "Maintenance Programs"],
+          title: "ASSURANCE",
+          items: ["ISO 9001:2015", "Material Testing", "Sustainability", "Compliance"],
         },
       ],
     },
   },
   {
-    label: "Projects",
-    href: "#projects",
+    label: "Company",
+    href: "/company",
     mega: {
-      image: "/images/3.jpeg",
-      title: "PROVEN IMPACT",
-      desc: "See how our infrastructure performs in the real world.",
-      link: "View Case Studies",
+      image: "/images/4.jpeg",
+      title: "THE H2 GROUP",
+      desc: "Decades of engineering heritage driving the future of water infrastructure.",
+      link: "About Us",
       columns: [
         {
-          title: "INSIGHTS",
-          items: ["Recent Deployments", "Case Studies", "Global Impact Reports", "Technical Whitepapers"],
+          title: "ABOUT",
+          items: ["Our History", "R&D Lab", "Facilities", "Careers"],
         },
       ],
     },
