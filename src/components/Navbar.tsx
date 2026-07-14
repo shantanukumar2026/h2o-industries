@@ -169,7 +169,13 @@ export default function Navbar() {
           >
             {/* Logo */}
             <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={() => {
+                if (pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                  router.push("/");
+                }
+              }}
               style={{
                 background: "none",
                 border: "none",

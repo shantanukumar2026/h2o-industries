@@ -2,18 +2,18 @@
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import CurbBoxFeature from "@/components/CurbBoxFeature";
 import About from "@/components/About";
-import ResearchDevelopment from "@/components/ResearchDevelopment";
 import Solutions from "@/components/Solutions";
 import TechnologyInnovation from "@/components/TechnologyInnovation";
-import Products from "@/components/Products";
+import ResearchDevelopment from "@/components/ResearchDevelopment";
 import ManufacturingCapabilities from "@/components/ManufacturingCapabilities";
 import ManufacturingProcess from "@/components/ManufacturingProcess";
+import InfrastructureFacilities from "@/components/InfrastructureFacilities";
+import CurbBoxFeature from "@/components/CurbBoxFeature";
+import Products from "@/components/Products";
 import QualityCompliance from "@/components/QualityCompliance";
 import TechnicalStandards from "@/components/TechnicalStandards";
 import Projects from "@/components/Projects";
-import InfrastructureFacilities from "@/components/InfrastructureFacilities";
 import Industries from "@/components/Industries";
 import GlobalSupplyNetwork from "@/components/GlobalSupplyNetwork";
 import Sustainability from "@/components/Sustainability";
@@ -23,24 +23,36 @@ export default function Home() {
   return (
     <main>
       <Navbar />
+      
+      {/* 1. Introduction: Who we are */}
       <Hero />
-      <CurbBoxFeature />
       <About />
-      <ResearchDevelopment />
+      
+      {/* 2. Innovation: The problems we solve and how we approach them */}
       <Solutions />
       <TechnologyInnovation />
-      <Products />
+      <ResearchDevelopment />
+      
+      {/* 3. The Engine: Our facilities and how we build */}
+      <InfrastructureFacilities />
       <ManufacturingCapabilities />
       <ManufacturingProcess />
+      
+      {/* 4. The Output: What we actually produce */}
+      <CurbBoxFeature />
+      <Products />
+      
+      {/* 5. The Proof: Quality standards and real-world usage */}
       <QualityCompliance />
       <TechnicalStandards />
       <Projects />
-      <InfrastructureFacilities />
       <Industries />
+      
+      {/* 6. The Scale & Future: Global reach and commitment */}
       <GlobalSupplyNetwork />
       <Sustainability />
+      
       <Footer />
     </main>
   );
 }
-
