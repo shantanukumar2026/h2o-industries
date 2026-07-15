@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { ArrowRight, ShieldCheck, Wrench, Layers } from "lucide-react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, ShieldCheck, Wrench, Layers, Settings, CheckCircle2, Play } from "lucide-react";
+import Image from "next/image";
 
 const specs = [
   { icon: ShieldCheck, label: "Cast-iron & HDPE composite body" },
@@ -14,61 +15,112 @@ export default function CurbBoxFeature() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const yWatermark = useTransform(scrollYProgress, [0, 1], [-150, 150]);
+  const yImage = useTransform(scrollYProgress, [0, 1], [80, -80]);
+
   return (
-    <section id="curb-box" className="curbbox-section" style={{ background: "#062347", position: "relative" }}>
-      <div className="curbbox-container" style={{ maxWidth: 1720, margin: "0 auto" }}>
+    <section id="curb-box" className="curbbox-section" style={{ background: "#F5F7FA", position: "relative", overflow: "hidden", height: "100vh", display: "flex", alignItems: "center" }}>
+      
+      {/* Background Typography Watermark */}
+      <motion.div className="watermark" style={{ y: yWatermark, position: "absolute", top: "10%", left: "-5%", fontSize: "clamp(10rem, 20vw, 25rem)", fontWeight: 900, color: "rgba(13, 58, 115, 0.03)", whiteSpace: "nowrap", fontStyle: "italic", pointerEvents: "none", zIndex: 0 }}>
+        H2 CURB BOX
+      </motion.div>
+
+      <div className="curbbox-container" style={{ maxWidth: 1600, margin: "0 auto", position: "relative" }}>
         <div
           ref={ref}
           className="curbbox-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr",
-            gap: 60,
+            gridTemplateColumns: "repeat(auto-fit, minmax(450px, 1fr))",
+            gap: 80,
             alignItems: "center",
           }}
         >
-          {/* Left: Product Video */}
+          {/* Left: Product Image Showcase with Enhanced Effects */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            style={{ position: "relative" }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            style={{ y: yImage, position: "relative", display: "flex", justifyContent: "center" }}
           >
             <div
               style={{
                 position: "relative",
                 width: "100%",
-                aspectRatio: "4/3",
-                background: "#031429",
-                border: "8px solid #fff",
-                overflow: "hidden",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+                maxWidth: "450px",
+                aspectRatio: "1/1",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
               }}
             >
-              <video
-                src="/videos/hero-bg-optimized.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              {/* Spinning Decorative Circle */}
+              {/* Background Glow Orb behind Image */}
+              <div style={{ position: "absolute", top: "50%", left: "50%", width: "90%", height: "90%", background: "radial-gradient(circle, rgba(33, 150, 243, 0.25) 0%, transparent 60%)", transform: "translate(-50%, -50%)", zIndex: 0 }} />
+
+              <motion.div 
+                initial={{ scale: 0.8, opacity: 0, rotate: 0 }}
+                animate={inView ? { scale: 1, opacity: 1, rotate: 360 } : {}}
+                transition={{ duration: 40, delay: 0.2, repeat: Infinity, ease: "linear" }}
+                style={{ position: "absolute", width: "95%", height: "95%", borderRadius: "50%", background: "linear-gradient(135deg, rgba(33,150,243,0.08), transparent)", border: "2px dashed rgba(33,150,243,0.25)", borderTopColor: "rgba(33,150,243,0.6)" }} 
               />
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "linear-gradient(to top, rgba(6,35,71,0.6) 0%, rgba(6,35,71,0) 40%)",
-                }}
+              <motion.div 
+                initial={{ scale: 0.7, opacity: 0, rotate: 360 }}
+                animate={inView ? { scale: 0.9, opacity: 1, rotate: 0 } : {}}
+                transition={{ duration: 30, delay: 0.2, repeat: Infinity, ease: "linear" }}
+                style={{ position: "absolute", width: "75%", height: "75%", borderRadius: "50%", border: "2px solid rgba(33,150,243,0.15)", borderBottomColor: "rgba(33,150,243,0.5)" }} 
               />
-              {/* Badge */}
-              <div style={{ position: "absolute", bottom: 0, left: 0, background: "#1565C0", padding: "16px 24px" }}>
-                <p style={{ fontSize: 12, fontWeight: 800, color: "#90CAF9", textTransform: "uppercase", letterSpacing: "0.1em", margin: 0 }}>
-                  Product In Action
-                </p>
-                <p style={{ fontSize: 18, fontWeight: 900, fontStyle: "italic", color: "#fff", textTransform: "uppercase", margin: 0, marginTop: 4 }}>
-                  H2 Curb Box
-                </p>
-              </div>
+              
+              {/* Floating Product Image */}
+              <motion.div
+                animate={{ y: [-15, 15, -15] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                style={{ position: "relative", width: "100%", height: "100%", zIndex: 1, mixBlendMode: "multiply" }}
+              >
+                <Image
+                  src="/images/curb-box.png"
+                  alt="H2 Curb Box"
+                  fill
+                  style={{ objectFit: "contain", filter: "drop-shadow(0 40px 60px rgba(0,0,0,0.15))" }}
+                />
+              </motion.div>
+
+              {/* Floating Tech Badges */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                style={{ position: "absolute", top: "22%", left: "-5%", zIndex: 10, display: "flex", alignItems: "center", gap: 12 }}
+              >
+                <div style={{ background: "#fff", padding: "10px 20px", borderRadius: 8, border: "1px solid #E0E0E0", boxShadow: "0 10px 30px rgba(0,0,0,0.08)", display: "flex", flexDirection: "column" }}>
+                  <span style={{ color: "#2196F3", fontSize: 10, fontWeight: 900, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 2 }}>MATERIAL SPEC</span>
+                  <span style={{ color: "#0D3A73", fontSize: 14, fontWeight: 800, textTransform: "uppercase" }}>High-Yield Cast Iron</span>
+                </div>
+                <div style={{ width: 60, height: 2, background: "linear-gradient(to right, #2196F3, transparent)" }} />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                style={{ position: "absolute", bottom: "35%", right: "-15%", zIndex: 10, display: "flex", alignItems: "center", gap: 12 }}
+              >
+                <div style={{ width: 60, height: 2, background: "linear-gradient(to left, #2196F3, transparent)" }} />
+                <div style={{ background: "#fff", padding: "10px 20px", borderRadius: 8, border: "1px solid #E0E0E0", boxShadow: "0 10px 30px rgba(0,0,0,0.08)", display: "flex", flexDirection: "column" }}>
+                  <span style={{ color: "#2196F3", fontSize: 10, fontWeight: 900, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 2 }}>ADAPTABILITY</span>
+                  <span style={{ color: "#0D3A73", fontSize: 14, fontWeight: 800, textTransform: "uppercase" }}>Adjustable Riser Core</span>
+                </div>
+              </motion.div>
+              
+              {/* Tech Lines */}
+              <div style={{ position: "absolute", bottom: "10%", left: "-10%", width: "40%", height: "1px", background: "linear-gradient(to right, transparent, #2196F3, transparent)" }} />
+              <div style={{ position: "absolute", top: "20%", right: "-10%", width: "40%", height: "1px", background: "linear-gradient(to right, transparent, #2196F3, transparent)" }} />
             </div>
           </motion.div>
 
@@ -78,64 +130,38 @@ export default function CurbBoxFeature() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                background: "#1565C0",
-                padding: "6px 16px",
-                marginBottom: 24,
-              }}
-            >
-              <div style={{ width: 12, height: 2, background: "#fff" }} />
-              <span style={{ color: "#fff", fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" }}>
-                Featured Product
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(21, 101, 192, 0.1)", padding: "6px 16px", marginBottom: 24 }}>
+              <Settings size={14} color="#1565C0" />
+              <span style={{ color: "#1565C0", fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                Signature Series
               </span>
             </div>
 
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(2rem, 6vw, 3.5rem)",
-                fontWeight: 900,
-                lineHeight: 1,
-                color: "#fff",
-                marginBottom: 24,
-                textTransform: "uppercase",
-                fontStyle: "italic",
-                letterSpacing: "0.02em",
-              }}
-            >
-              THE H2 <br />
-              <span style={{ color: "#42A5F5" }}>CURB BOX</span>
+            <h2 className="font-display" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 900, color: "#0D3A73", lineHeight: 1.1, marginBottom: 16, textTransform: "uppercase", fontStyle: "italic" }}>
+              THE H2<br/>
+              <span style={{ color: "#2196F3" }}>CURB BOX</span>
             </h2>
+            <p style={{ color: "#4A6375", fontSize: 16, lineHeight: 1.6, marginBottom: 24, fontWeight: 500 }}>Designed for maximum durability in harsh environments, the H2 Curb Box sets the standard for municipal water infrastructure reliability.</p>
 
-            <div style={{ width: 80, height: 4, background: "#2196F3", marginBottom: 32 }} />
-
-            <p style={{ color: "#90CAF9", fontSize: 16, lineHeight: 1.8, marginBottom: 32, fontWeight: 500, maxWidth: 560 }}>
-              Engineered for durability and secure street-level access, the H2 Curb Box protects and controls water shut-off valves in municipal and residential water lines. Its telescoping riser adjusts to grade, while the traffic-rated locking lid keeps the valve secure from tampering and debris.
-            </p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 40 }}>
-              {specs.map((s) => {
+            {/* Feature List */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 32 }}>
+              {specs.map((s, i) => {
                 const Icon = s.icon;
                 return (
-                  <div key={s.label} style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                    <div style={{
-                      width: 44,
-                      height: 44,
-                      background: "rgba(33,150,243,0.15)",
-                      border: "1px solid rgba(144,202,249,0.3)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}>
-                      <Icon size={20} color="#42A5F5" />
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.3 + (i * 0.1) }}
+                    key={s.label} 
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
+                      <div style={{ width: 28, height: 28, background: "rgba(33, 150, 243, 0.1)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <CheckCircle2 size={14} color="#1565C0" />
+                      </div>
+                      <span style={{ color: "#0D3A73", fontWeight: 800, fontSize: 14, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.label}</span>
                     </div>
-                    <span style={{ color: "#fff", fontSize: 15, fontWeight: 700 }}>{s.label}</span>
-                  </div>
+                    <p style={{ color: "#4A6375", fontSize: 13, margin: 0, paddingLeft: 40, lineHeight: 1.5, fontWeight: 500 }}>Engineered for absolute reliability.</p>
+                  </motion.div>
                 );
               })}
             </div>
@@ -145,34 +171,35 @@ export default function CurbBoxFeature() {
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: 12,
+                gap: 16,
                 background: "#1565C0",
                 color: "#fff",
                 textDecoration: "none",
-                padding: "16px 32px",
+                padding: "16px 40px",
                 fontSize: 14,
                 fontWeight: 800,
                 textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                transition: "background 0.2s",
+                letterSpacing: "0.15em",
+                transition: "all 0.3s ease",
+                boxShadow: "0 10px 30px rgba(21,101,192,0.3)"
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "#1E88E5")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "#1565C0")}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "#1E88E5"; e.currentTarget.style.transform = "translateX(4px)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "#1565C0"; e.currentTarget.style.transform = "translateX(0)"; }}
             >
-              Explore The Range <ArrowRight size={18} />
+              Explore Products <ArrowRight size={20} />
             </a>
           </motion.div>
         </div>
       </div>
 
       <style>{`
-        .curbbox-section { padding: 100px 0; }
-        .curbbox-container { padding: 0 60px; }
+        .curbbox-section { padding: 40px 0; }
+        .curbbox-container { padding: 0 40px; }
         @media (min-width: 1024px) {
-          .curbbox-grid { grid-template-columns: 1fr 1fr !important; }
+          .curbbox-grid { grid-template-columns: 1.1fr 1fr !important; }
         }
         @media (max-width: 768px) {
-          .curbbox-section { padding: 60px 0; }
+          .curbbox-section { padding: 80px 0; }
           .curbbox-container { padding: 0 24px; }
         }
       `}</style>

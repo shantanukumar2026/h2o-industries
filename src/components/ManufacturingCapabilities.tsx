@@ -35,7 +35,7 @@ export default function ManufacturingCapabilities() {
       id="capabilities" 
       style={{ 
         background: "#F5F7FA", 
-        padding: "120px 0",
+        padding: "60px 0 60px 0",
       }}
     >
       <div style={{ maxWidth: 1720, margin: "0 auto", padding: "0 60px" }}>

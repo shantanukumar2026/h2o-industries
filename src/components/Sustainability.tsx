@@ -19,7 +19,7 @@ export default function Sustainability() {
     <section 
       id="sustainability" 
       style={{ 
-        background: "#031124", 
+        background: "#020B14", 
         padding: "120px 0",
         position: "relative"
       }}

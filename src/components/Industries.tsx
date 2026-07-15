@@ -18,7 +18,7 @@ export default function Industries() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="industries" className="industries-section" style={{ background: "#062347", position: "relative" }}>
+    <section id="industries" className="industries-section" style={{ background: "#020B14", position: "relative" }}>
       {/* Top Border Accent */}
       <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: 4, background: "#2196F3" }} />
 

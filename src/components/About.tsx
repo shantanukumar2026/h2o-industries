@@ -1,263 +1,166 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Cog, Droplets, Globe, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
 
-const pillars = [
+const portfolioItems = [
   {
-    icon: Cog,
-    title: "ENGINEERING EXCELLENCE",
+    title: "DEDICATED TO SAVING OUR OCEANS",
+    subtitle: "THROUGH ENGINEERING",
+    desc: "H2 Industries was founded with a single unwavering mission: to develop industrial water management products that actively reduce environmental harm.",
+    points: ["Actively reduces environmental harm", "Industrial-grade water management"],
+    video: "/portfolio/1.mp4",
+    theme: "dark"
+  },
+  {
+    title: "PRECISION ENGINEERING",
+    subtitle: "FOR THE TOUGHEST ENVIRONMENTS",
     desc: "Every product is precision-engineered to meet the most demanding industrial and environmental standards.",
+    points: ["Engineered for absolute reliability", "Meets demanding environmental standards"],
+    video: "/portfolio/2.mp4",
+    theme: "light"
   },
   {
-    icon: Droplets,
-    title: "OCEAN CONSERVATION",
-    desc: "Our mission is embedded in every design decision — protecting waterways and marine ecosystems through smarter infrastructure.",
+    title: "MODULAR ENCLOSURES",
+    subtitle: "BUILT TO LAST",
+    desc: "We design for compatibility with emerging hydrogen and clean-energy projects, and for long-term protection of waterways.",
+    points: ["Long-term waterway protection", "Compatible with clean-energy projects"],
+    video: "/portfolio/3.mp4",
+    theme: "dark"
   },
   {
-    icon: Globe,
     title: "SUSTAINABLE IMPACT",
+    subtitle: "GLOBAL REACH",
     desc: "We engineer products that reduce pollutant entry into stormwater systems, contributing to a cleaner, healthier planet.",
-  },
+    points: ["Reduces pollutant entry into stormwater", "Contributes to a cleaner, healthier planet"],
+    video: "/portfolio/4.mp4",
+    theme: "light"
+  }
 ];
 
 export default function About() {
+  return (
+    <div id="about" style={{ width: "100%" }}>
+      {portfolioItems.map((item, index) => (
+        <PortfolioSection key={index} item={item} index={index} />
+      ))}
+    </div>
+  );
+}
+
+function PortfolioSection({ item, index }: { item: any; index: number }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const isDark = item.theme === "dark";
+  const bgColor = isDark ? "#062347" : "#ffffff";
+  const textColor = isDark ? "#FFFFFF" : "#0D3A73";
+  const accentColor = isDark ? "#2196F3" : "#1565C0";
+  const descColor = isDark ? "#90CAF9" : "#1976D2";
 
   return (
-    <section id="about" className="about-section" style={{ background: "#F0F7FF", position: "relative" }}>
-      {/* Decorative Top Border */}
-      <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: 8, background: "#0D2B55" }} />
-      <div style={{ position: "absolute", top: 8, left: 0, width: "100%", height: 2, background: "#1565C0" }} />
-
-      <div className="about-container" style={{ maxWidth: 1720, margin: "0 auto" }}>
-        {/* Top: split layout */}
-        <div
-          ref={ref}
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            gap: 80,
-            marginBottom: 80,
-            alignItems: "center",
-          }}
-          className="about-grid"
-        >
-          {/* Left: Text Content */}
+    <section 
+      ref={ref}
+      style={{ 
+        height: "100vh", 
+        width: "100%", 
+        background: bgColor,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        overflow: "hidden"
+      }}
+    >
+      <div 
+        style={{ 
+          maxWidth: 1720, 
+          width: "100%", 
+          margin: "0 auto", 
+          padding: "0 60px",
+          display: "grid",
+          gridTemplateColumns: index % 2 === 0 ? "1fr 1fr" : "1fr 1fr",
+          gap: 60,
+          alignItems: "center",
+          height: "100%"
+        }}
+        className="portfolio-grid"
+      >
+        {/* Content Side */}
+        <div style={{ order: index % 2 === 0 ? 1 : 2 }} className="portfolio-content">
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-20%" }}
+            transition={{ duration: 0.8 }}
           >
-            {/* Tag */}
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                background: "#0D2B55",
-                padding: "6px 16px",
-                marginBottom: 24,
-              }}
-            >
-              <div style={{ width: 12, height: 2, background: "#2196F3" }} />
-              <span
-                style={{
-                  color: "#fff",
-                  fontSize: 12,
-                  fontWeight: 800,
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Who We Are
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: isDark ? "rgba(33, 150, 243, 0.1)" : "rgba(21, 101, 192, 0.1)", padding: "6px 16px", marginBottom: 24 }}>
+              <div style={{ width: 12, height: 2, background: accentColor }} />
+              <span style={{ color: accentColor, fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                {item.subtitle}
               </span>
             </div>
 
-            {/* Headline */}
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(2rem, 8vw, 4rem)",
-                fontWeight: 900,
-                lineHeight: 1,
-                color: "#0D3A73",
-                marginBottom: 32,
-                textTransform: "uppercase",
-                fontStyle: "italic",
-                letterSpacing: "0.02em",
-              }}
-            >
-              DEDICATED TO <br />
-              <span style={{ color: "#1565C0" }}>SAVING OUR OCEANS</span><br />
-              THROUGH ENGINEERING
+            <h2 className="font-display" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", fontWeight: 900, color: textColor, lineHeight: 1.1, marginBottom: 24, textTransform: "uppercase", fontStyle: "italic", letterSpacing: "0.02em" }}>
+              {item.title}
             </h2>
 
-            {/* Blue Divider */}
-            <div style={{ width: 80, height: 4, background: "#2196F3", marginBottom: 32 }} />
+            <div style={{ width: 80, height: 4, background: accentColor, marginBottom: 32 }} />
 
-            <p style={{ color: "#1565C0", fontSize: 16, lineHeight: 1.8, marginBottom: 20, fontWeight: 500 }}>
-              H2 Industries was founded with a single unwavering mission: to develop industrial water management products that actively reduce environmental harm. We saw a gap in the market — stormwater systems that were purely functional but ignored their ecological footprint.
-            </p>
-            <p style={{ color: "#1565C0", fontSize: 16, lineHeight: 1.8, marginBottom: 40, fontWeight: 500 }}>
-              Today, H2 Industries engineers and manufactures a comprehensive range of water sampling stations, modular enclosures, and precision drainage infrastructure — all designed from the ground up to protect our waterways and oceans.
+            <p style={{ color: descColor, fontSize: 18, lineHeight: 1.8, fontWeight: 500, maxWidth: 600 }}>
+              {item.desc}
             </p>
 
-            <p style={{ color: "#1565C0", fontSize: 16, lineHeight: 1.8, marginBottom: 24, fontWeight: 700 }}>
-              With over a decade of engineering and manufacturing experience, H2 Industries delivers field-tested solutions across municipal, industrial and marine sectors. Our team combines practical field knowledge, advanced materials selection, and rigorous quality control to produce reliable products that meet regulatory requirements and perform in the toughest environments.
-            </p>
-
-            <p style={{ color: "#1565C0", fontSize: 15, lineHeight: 1.7, marginBottom: 32, fontWeight: 500 }}>
-              Industry snapshot: low-emission fuels, electrolyser deployments, and resilient coastal infrastructure are driving new requirements for industrial systems. We design for compatibility with emerging hydrogen and clean-energy projects, and for long-term protection of waterways as regulations and project priorities evolve.
-            </p>
-
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              <a
-                href="#products"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 12,
-                  background: "#1565C0",
-                  color: "#fff",
-                  textDecoration: "none",
-                  padding: "16px 32px",
-                  fontSize: 14,
-                  fontWeight: 800,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.05em",
-                  transition: "background 0.2s",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "#0D47A1")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "#1565C0")}
-              >
-                View Our Products <ArrowRight size={18} />
-              </a>
-            </div>
-          </motion.div>
-
-          {/* Right: Sharp Image Layout */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            style={{ position: "relative", zIndex: 1 }}
-          >
-            {/* Background Offset Block */}
-            <div
-              className="about-image-offset"
-              style={{
-                position: "absolute",
-                background: "#0D2B55",
-                zIndex: -1,
-              }}
-            />
-            {/* Image Container */}
-            <div style={{
-              position: "relative",
-              width: "100%",
-              aspectRatio: "4/3",
-              background: "#062347",
-              border: "8px solid #fff",
-              boxShadow: "0 20px 40px rgba(6,35,71,0.1)",
-            }}>
-              <Image
-                src="/images/2.jpeg"
-                alt="H2 Industries industrial setting"
-                fill
-                style={{ objectFit: "cover", opacity: 0.9 }}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              {/* Sharp industrial badge */}
-              <div style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                background: "#1565C0",
-                padding: "16px 24px",
-                display: "inline-block",
-              }}>
-                <p style={{ fontSize: 12, fontWeight: 800, color: "#90CAF9", textTransform: "uppercase", letterSpacing: "0.1em", margin: 0 }}>
-                  EST. INDUSTRY LEADER
-                </p>
-                <p style={{ fontSize: 18, fontWeight: 900, fontStyle: "italic", color: "#fff", textTransform: "uppercase", margin: 0, marginTop: 4 }}>
-                  H2 INDUSTRIES
-                </p>
+            {item.points && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 24 }}>
+                {item.points.map((point: string, i: number) => (
+                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                    <CheckCircle2 size={20} color={accentColor} style={{ marginTop: 2, flexShrink: 0 }} />
+                    <span style={{ color: descColor, fontSize: 16, lineHeight: 1.6, fontWeight: 600 }}>{point}</span>
+                  </div>
+                ))}
               </div>
-            </div>
+            )}
           </motion.div>
         </div>
 
-        {/* Pillars / Feature Blocks */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: 32,
-          marginTop: 100,
-        }}>
-          {pillars.map((p, i) => {
-            const Icon = p.icon;
-            return (
-              <motion.div
-                key={p.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.3 + i * 0.1 }}
-                style={{
-                  background: "#fff",
-                  padding: "40px 32px",
-                  borderTop: "4px solid #1565C0",
-                  boxShadow: "0 10px 30px rgba(6,35,71,0.05)",
-                  position: "relative",
-                }}
-              >
-                <div style={{
-                  width: 56,
-                  height: 56,
-                  background: "#E0F0FF",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 24,
-                  border: "1px solid #90CAF9",
-                }}>
-                  <Icon size={24} color="#0D2B55" />
-                </div>
-                <h3 style={{ fontSize: 16, fontWeight: 900, fontStyle: "italic", color: "#0D3A73", marginBottom: 16, letterSpacing: "0.02em" }}>
-                  {p.title}
-                </h3>
-                <p style={{ fontSize: 15, lineHeight: 1.7, color: "#1976D2", fontWeight: 500, margin: 0 }}>
-                  {p.desc}
-                </p>
-              </motion.div>
-            );
-          })}
+        {/* Media Side */}
+        <div style={{ order: index % 2 === 0 ? 2 : 1, position: "relative", height: "70vh", width: "100%" }} className="portfolio-media">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-20%" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            style={{ 
+              width: "100%", 
+              height: "100%", 
+              position: "relative",
+              background: isDark ? "#062347" : "#ffffff",
+              border: `8px solid ${isDark ? "rgba(255,255,255,0.02)" : "#062347"}`,
+              boxShadow: "0 40px 80px rgba(0,0,0,0.5)",
+              overflow: "hidden"
+            }}
+          >
+            <video 
+              src={item.video} 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              style={{ width: "100%", height: "100%", objectFit: "contain", mixBlendMode: isDark ? "lighten" : "multiply", filter: isDark ? "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" : "none" }}
+            />
+          </motion.div>
         </div>
       </div>
 
       <style>{`
-        @media (min-width: 1024px) {
-          .about-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
-        .about-section { padding: 100px 0; }
-        .about-container { padding: 0 60px; }
-        .about-image-offset { top: 24px; right: -24px; bottom: -24px; left: 24px; }
-        
-        @media (max-width: 1023px) {
-          .about-grid {
+        @media (max-width: 1024px) {
+          .portfolio-grid {
+            grid-template-columns: 1fr !important;
+            padding: 80px 30px 60px 30px !important;
             gap: 40px !important;
-            margin-bottom: 40px !important;
           }
-        }
-        @media (max-width: 768px) {
-          .about-section { padding: 60px 0; }
-          .about-container { padding: 0 24px; }
-          .about-image-offset { top: 12px; right: -12px; bottom: -12px; left: 12px; }
+          .portfolio-content { order: 1 !important; }
+          .portfolio-media { order: 2 !important; height: 40vh !important; }
         }
       `}</style>
     </section>

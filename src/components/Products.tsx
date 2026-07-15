@@ -33,7 +33,7 @@ export default function Products() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [search, setSearch] = useState("");
   const [cat, setCat] = useState("All");
-  const [count, setCount] = useState(8);
+  const [count, setCount] = useState(4);
   const [qv, setQv] = useState<(typeof allProducts)[0] | null>(null);
 
   const filtered = allProducts.filter((p) => {
@@ -114,7 +114,7 @@ export default function Products() {
               type="text"
               placeholder="Search by name, category or SKU…"
               value={search}
-              onChange={(e) => { setSearch(e.target.value); setCount(8); }}
+              onChange={(e) => { setSearch(e.target.value); setCount(4); }}
               style={{
                 width: "100%",
                 padding: "16px 16px 16px 48px",
@@ -138,7 +138,7 @@ export default function Products() {
             {cats.map((c) => (
               <button
                 key={c}
-                onClick={() => { setCat(c); setCount(8); }}
+                onClick={() => { setCat(c); setCount(4); }}
                 style={{
                   padding: "16px 24px",
                   border: "none",
@@ -198,7 +198,7 @@ export default function Products() {
         {hasMore && (
           <div style={{ textAlign: "center", marginTop: 48 }}>
             <button
-              onClick={() => setCount((c) => c + 4)}
+              onClick={() => router.push("/products")}
               style={{
                 background: "#0D3A73",
                 color: "#fff",
@@ -218,7 +218,7 @@ export default function Products() {
               onMouseEnter={(e) => { e.currentTarget.style.background = "#1565C0"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#0D3A73"; }}
             >
-              LOAD MORE <ArrowRight size={16} />
+              VIEW ALL PRODUCTS <ArrowRight size={16} />
             </button>
           </div>
         )}
@@ -288,10 +288,10 @@ export default function Products() {
               <div style={{ display: "grid", gridTemplateColumns: "1fr", overflowY: "auto", maxHeight: "calc(90vh - 120px)" }} className="modal-grid">
                 
                 {/* Image Col (Dark) */}
-                <div style={{ background: "#050d1c", position: "relative", aspectRatio: "1", borderRight: "1px solid #E0E0E0" }} className="modal-img-col">
+                <div style={{ background: "#062347", position: "relative", aspectRatio: "1", borderRight: "1px solid #E0E0E0" }} className="modal-img-col">
                   {/* Blueprint Grid */}
                   <div style={{ position: "absolute", inset: 0, opacity: 0.1, backgroundImage: "linear-gradient(rgba(33, 150, 243, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(33, 150, 243, 0.5) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
-                  <Image src={qv.image} alt={qv.name} fill style={{ objectFit: "contain", padding: 40, filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.8))", zIndex: 2 }} />
+                  <Image src={qv.image} alt={qv.name} fill style={{ objectFit: "contain", padding: 40, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))", mixBlendMode: "lighten", zIndex: 2 }} />
                 </div>
                 
                 {/* Spec Col (Light) */}
@@ -406,8 +406,8 @@ function ProductCard({ product, onQuickView, catColor }: {
         position: "absolute", inset: 0, border: "2px solid #2196F3", opacity: hovered ? 1 : 0, transition: "opacity 0.3s ease", pointerEvents: "none", zIndex: 5
       }} />
 
-      {/* Image Block (Mixed Contrast - Dark backdrop) */}
-      <div style={{ position: "relative", aspectRatio: "1", background: "#050d1c", borderBottom: "1px solid #E0E0E0", overflow: "hidden" }}>
+      {/* Image Block (Mixed Contrast) */}
+      <div style={{ position: "relative", aspectRatio: "1", background: "#062347", borderBottom: "1px solid #E0E0E0", overflow: "hidden" }}>
         {/* Blueprint Grid */}
         <div style={{ position: "absolute", inset: 0, opacity: 0.1, backgroundImage: "linear-gradient(rgba(33, 150, 243, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(33, 150, 243, 0.5) 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
 
@@ -417,10 +417,11 @@ function ProductCard({ product, onQuickView, catColor }: {
           fill
           style={{
             objectFit: "contain",
-            padding: 32,
-            transform: hovered ? "scale(1.05)" : "scale(1)",
-            transition: "transform 0.4s ease",
-            filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.8))",
+            padding: 40,
+            transform: hovered ? "scale(1.1)" : "scale(1)",
+            transition: "transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)",
+            filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))",
+            mixBlendMode: "lighten",
             zIndex: 2
           }}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

@@ -17,7 +17,7 @@ export default function ManufacturingProcess() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="process" className="section-pad" style={{ background: "#F5F7FA" }}>
+    <section id="process" style={{ background: "#F5F7FA", padding: "60px 0 120px 0" }}>
       <div style={{ maxWidth: 1720, margin: "0 auto", padding: "0 60px" }}>
         {/* Header */}
         <div ref={ref} style={{ textAlign: "center", marginBottom: 64 }}>

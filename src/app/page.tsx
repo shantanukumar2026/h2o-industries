@@ -13,7 +13,6 @@ import CurbBoxFeature from "@/components/CurbBoxFeature";
 import Products from "@/components/Products";
 import QualityCompliance from "@/components/QualityCompliance";
 import TechnicalStandards from "@/components/TechnicalStandards";
-import Projects from "@/components/Projects";
 import Industries from "@/components/Industries";
 import GlobalSupplyNetwork from "@/components/GlobalSupplyNetwork";
 import Sustainability from "@/components/Sustainability";
@@ -45,7 +44,6 @@ export default function Home() {
       {/* 5. The Proof: Quality standards and real-world usage */}
       <QualityCompliance />
       <TechnicalStandards />
-      <Projects />
       <Industries />
       
       {/* 6. The Scale & Future: Global reach and commitment */}

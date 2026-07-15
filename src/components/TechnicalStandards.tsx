@@ -16,14 +16,11 @@ export default function TechnicalStandards() {
   ];
 
   return (
-    <section 
-      id="standards" 
-      style={{ 
-        background: "#031124", 
+    <section id="standards" className="standards-section" style={{ 
+        background: "#062347", 
         padding: "100px 0",
         borderTop: "1px solid rgba(255,255,255,0.05)"
-      }}
-    >
+      }}>
       <div style={{ maxWidth: 1720, margin: "0 auto", padding: "0 60px" }}>
         <div ref={ref} style={{ display: "flex", flexWrap: "wrap", gap: 60, alignItems: "center" }}>
           

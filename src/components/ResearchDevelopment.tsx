@@ -36,7 +36,7 @@ export default function ResearchDevelopment() {
       id="research" 
       style={{ 
         position: "relative",
-        background: "#031124", 
+        background: "#062347", 
         padding: "100px 0",
         overflow: "hidden"
       }}

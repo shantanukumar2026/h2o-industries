@@ -19,7 +19,7 @@ export default function QualityCompliance() {
     <section 
       id="quality" 
       style={{ 
-        background: "#062347", 
+        background: "#020B14", 
         padding: "100px 0",
         position: "relative"
       }}

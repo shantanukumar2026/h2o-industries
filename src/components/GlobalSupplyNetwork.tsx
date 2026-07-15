@@ -22,9 +22,9 @@ export default function GlobalSupplyNetwork() {
 
   return (
     <section 
-      id="network" 
+      id="global-network" 
       style={{ 
-        background: "#050d1c", 
+        background: "#062347", 
         padding: "120px 0",
         position: "relative",
         overflow: "hidden"

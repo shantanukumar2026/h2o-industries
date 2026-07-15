@@ -153,10 +153,10 @@ export default function Hero() {
             alignItems: "stretch",
             gap: 16,
             marginRight: 60, // Space for the side bar
-            background: "rgba(5, 13, 28, 0.8)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
-            border: "1px solid rgba(33, 150, 243, 0.3)",
+            background: "rgba(5, 13, 28, 0.3)",
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
+            border: "1px solid rgba(33, 150, 243, 0.2)",
             borderTop: "4px solid #2196F3",
             padding: "32px",
             width: "380px",
@@ -291,72 +291,60 @@ export default function Hero() {
             right: 20,
           }}
         >
-          <button
-            onClick={toggleMute}
-            className="side-btn"
-            style={{
-              width: 44,
-              height: 44,
-              borderRadius: "50%",
-              background: "transparent",
-              border: "2px solid #2196F3",
-              color: "#fff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              transition: "all 0.2s",
-            }}
-            title={isMuted ? "Unmute Video" : "Mute Video"}
-          >
-            {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-          </button>
-          <a href="#chat" className="side-btn-filled">
-            <MessageSquare size={18} />
-          </a>
-          <a href="#call" className="side-btn-filled">
-            <Phone size={18} />
-          </a>
-          <a href="#email" className="side-btn-filled">
-            <Mail size={18} />
-          </a>
+          <div className="icon-wrapper">
+            <button
+              onClick={toggleMute}
+              className="side-btn"
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: "50%",
+                background: "transparent",
+                border: "2px solid #2196F3",
+                color: "#fff",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                transition: "all 0.2s",
+              }}
+            >
+              {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+            </button>
+            <div className="icon-tooltip">{isMuted ? "Unmute" : "Mute"}</div>
+          </div>
+          
+          <div className="icon-wrapper">
+            <a href="#chat" className="side-btn-filled">
+              <MessageSquare size={18} />
+            </a>
+            <div className="icon-tooltip">Live Chat</div>
+          </div>
+          
+          <div className="icon-wrapper">
+            <a href="#call" className="side-btn-filled">
+              <Phone size={18} />
+            </a>
+            <div className="icon-tooltip">Call Us</div>
+          </div>
+          
+          <div className="icon-wrapper">
+            <a href="#email" className="side-btn-filled">
+              <Mail size={18} />
+            </a>
+            <div className="icon-tooltip">Email Us</div>
+          </div>
+          
+          <div className="icon-wrapper">
+            <a href="#contact" className="side-btn-filled">
+              <User size={18} />
+            </a>
+            <div className="icon-tooltip">Dedicated Engineer</div>
+          </div>
         </div>
       </div>
 
-      {/* Bottom Right Floating Button */}
-      <a
-        href="#contact"
-        className="hero-floating-btn"
-        style={{
-          position: "absolute",
-          bottom: 30,
-          right: 90,
-          background: "#2196F3",
-          color: "#fff",
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-          padding: "14px 28px",
-          borderRadius: 999,
-          textDecoration: "none",
-          fontSize: 14,
-          fontWeight: 700,
-          zIndex: 20,
-          boxShadow: "0 10px 30px rgba(6,35,71,0.3)",
-          transition: "transform 0.2s, background 0.2s",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = "#1E88E5";
-          e.currentTarget.style.transform = "translateY(-2px)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = "#2196F3";
-          e.currentTarget.style.transform = "translateY(0)";
-        }}
-      >
-        <User size={18} />
-        Meet your dedicated Engineer
-      </a>
+
 
       {/* Bottom Thick Blue Border */}
       <div
@@ -383,6 +371,32 @@ export default function Hero() {
       />
 
       <style>{`
+        .icon-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+        .icon-tooltip {
+          position: absolute;
+          right: 60px;
+          background: rgba(5, 13, 26, 0.9);
+          color: white;
+          padding: 6px 12px;
+          border-radius: 6px;
+          font-size: 12px;
+          font-weight: 700;
+          white-space: nowrap;
+          pointer-events: none;
+          opacity: 0;
+          transform: translateX(10px);
+          transition: all 0.2s ease;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .icon-wrapper:hover .icon-tooltip {
+          opacity: 1;
+          transform: translateX(0);
+        }
         .side-btn:hover {
           background: #2196F3 !important;
         }

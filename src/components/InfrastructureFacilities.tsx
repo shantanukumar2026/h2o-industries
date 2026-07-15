@@ -9,10 +9,10 @@ export default function InfrastructureFacilities() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   const facilities = [
-    { title: "Primary Extrusion Facility", desc: "120,000 sq ft unit dedicated to high-volume polymer processing.", span: 2, height: 400 },
-    { title: "Quality Assurance Lab", desc: "Climate-controlled testing environment with advanced spectroscopy.", span: 1, height: 400 },
-    { title: "Logistics Hub", desc: "Automated warehousing ensuring rapid dispatch across North America.", span: 1, height: 300 },
-    { title: "Heavy Fabrication Wing", desc: "Specialized sector for custom steel reinforcement and structural assembly.", span: 2, height: 300 },
+    { title: "Primary Extrusion Facility", desc: "120,000 sq ft unit dedicated to high-volume polymer processing.", span: 2, height: 400, video: "/portfolio/1.mp4" },
+    { title: "Quality Assurance Lab", desc: "Climate-controlled testing environment with advanced spectroscopy.", span: 1, height: 400, video: "/portfolio/2.mp4" },
+    { title: "Logistics Hub", desc: "Automated warehousing ensuring rapid dispatch across North America.", span: 1, height: 300, video: "/portfolio/3.mp4" },
+    { title: "Heavy Fabrication Wing", desc: "Specialized sector for custom steel reinforcement and structural assembly.", span: 2, height: 300, video: "/portfolio/4.mp4" },
   ];
 
   return (
@@ -20,7 +20,7 @@ export default function InfrastructureFacilities() {
       id="infrastructure" 
       style={{ 
         background: "#F5F7FA", 
-        padding: "120px 0",
+        padding: "120px 0 60px 0",
       }}
     >
       <div style={{ maxWidth: 1720, margin: "0 auto", padding: "0 60px" }}>
@@ -56,24 +56,31 @@ export default function InfrastructureFacilities() {
               style={{
                 gridColumn: `span ${fac.span}`,
                 minHeight: fac.height,
-                background: "#E3E9F0",
+                background: "#062347",
                 position: "relative",
                 overflow: "hidden",
-                borderRadius: "4px"
+                borderRadius: "8px",
+                border: "1px solid #E0E0E0",
+                boxShadow: "0 10px 30px rgba(6,35,71,0.08)"
               }}
               className="facility-card"
             >
-              {/* Image Placeholder */}
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(13, 58, 115, 0.4), rgba(21, 101, 192, 0.8))" }} />
-              <div style={{ position: "absolute", inset: 0, backgroundSize: "cover", backgroundPosition: "center", mixBlendMode: "overlay", opacity: 0.5, backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')" }} />
-              
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(6,35,71,0.9) 0%, transparent 60%)" }} />
+              <video
+                src={fac.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0, opacity: 0.6 }}
+              />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(13, 58, 115, 0.4), rgba(33, 150, 243, 0.3))", zIndex: 1, mixBlendMode: "multiply" }} />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(5,13,28,0.9) 0%, transparent 70%)", zIndex: 2 }} />
 
               {/* Content Overlay */}
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: 32, display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: 32, display: "flex", justifyContent: "space-between", alignItems: "flex-end", zIndex: 3 }}>
                 <div style={{ maxWidth: "80%" }}>
-                  <h3 style={{ color: "#fff", fontSize: 24, fontWeight: 800, textTransform: "uppercase", marginBottom: 8, letterSpacing: 0.5 }}>{fac.title}</h3>
-                  <p style={{ color: "#90CAF9", fontSize: 14, margin: 0, lineHeight: 1.5 }}>{fac.desc}</p>
+                  <h3 style={{ color: "#fff", fontSize: 24, fontWeight: 900, textTransform: "uppercase", marginBottom: 8, letterSpacing: "0.02em", fontStyle: "italic" }}>{fac.title}</h3>
+                  <p style={{ color: "#90CAF9", fontSize: 14, margin: 0, lineHeight: 1.6, fontWeight: 500 }}>{fac.desc}</p>
                 </div>
                 
                 <div className="fac-icon-wrap" style={{ width: 48, height: 48, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(4px)", border: "1px solid rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "50%", transition: "all 0.3s" }}>
