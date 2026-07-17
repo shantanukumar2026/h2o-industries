@@ -22,6 +22,7 @@ import TechnicalStandards from "@/components/TechnicalStandards";
 import Industries from "@/components/Industries";
 import GlobalSupplyNetwork from "@/components/GlobalSupplyNetwork";
 import Sustainability from "@/components/Sustainability";
+import Partners from "@/components/Partners";
 
 import Footer from "@/components/Footer";
 
@@ -78,6 +79,7 @@ export default function HomepageTwo() {
         
         <PresentationSlide><GlobalSupplyNetwork /></PresentationSlide>
         <PresentationSlide><Sustainability /></PresentationSlide>
+        <PresentationSlide><Partners /></PresentationSlide>
         
         <PresentationSlide><Footer /></PresentationSlide>
       </main>

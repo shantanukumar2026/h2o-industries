@@ -18,6 +18,7 @@ import TechnicalStandards from "@/components/TechnicalStandards";
 import Industries from "@/components/Industries";
 import GlobalSupplyNetwork from "@/components/GlobalSupplyNetwork";
 import Sustainability from "@/components/Sustainability";
+import Partners from "@/components/Partners";
 import Footer from "@/components/Footer";
 
 import PresentationSlide from "@/components/PresentationSlide";
@@ -69,6 +70,7 @@ export default function Home() {
         {/* 6. The Scale & Future: Global reach and commitment */}
         <PresentationSlide><GlobalSupplyNetwork /></PresentationSlide>
         <PresentationSlide><Sustainability /></PresentationSlide>
+        <PresentationSlide><Partners /></PresentationSlide>
         
         <PresentationSlide><Footer /></PresentationSlide>
       </main>

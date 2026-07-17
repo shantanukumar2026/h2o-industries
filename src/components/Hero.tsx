@@ -34,7 +34,7 @@ export default function Hero() {
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <video
           ref={videoRef}
-          src={data.videoBg || "/videos/hero-bg-optimized.mp4"}
+          src={(data as any).videoBg || "/videos/hero-bg-optimized.mp4"}
           autoPlay
           loop
           muted={isMuted}
