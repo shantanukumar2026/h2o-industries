@@ -3,7 +3,7 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function GlobalProgressBar({ containerRef }: { containerRef: React.RefObject<HTMLElement> }) {
+export default function GlobalProgressBar({ containerRef }: { containerRef: React.RefObject<any> }) {
   const [isClient, setIsClient] = useState(false);
   
   useEffect(() => {
