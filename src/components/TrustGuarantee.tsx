@@ -39,10 +39,15 @@ export default function TrustGuarantee() {
       ref={containerRef}
       style={{
         position: "relative",
-        background: "#030b17", // Extremely deep blue/black for max contrast
-        padding: "160px 0",
+        background: "#030b17",
+        height: "100vh",
+        paddingTop: 120,
+        boxSizing: "border-box",
         overflow: "hidden",
-        borderTop: "1px solid rgba(255,255,255,0.02)"
+        borderTop: "1px solid rgba(255,255,255,0.02)",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
       }}
     >
       {/* Dynamic Halo Background */}

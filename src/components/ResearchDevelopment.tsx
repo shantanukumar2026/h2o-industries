@@ -24,8 +24,13 @@ export default function ResearchDevelopment() {
       style={{ 
         position: "relative",
         background: "#062347", 
-        padding: "100px 0",
-        overflow: "hidden"
+        height: "100vh",
+        paddingTop: 120,
+        boxSizing: "border-box",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
       }}
     >
       {/* Blueprint Grid Overlay */}

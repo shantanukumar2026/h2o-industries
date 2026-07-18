@@ -43,7 +43,8 @@ function PortfolioSection({ item, index }: { item: any; index: number }) {
         justifyContent: "center",
         position: "relative",
         overflow: "hidden",
-        paddingTop: "80px"
+        paddingTop: 120,
+        boxSizing: "border-box",
       }}
     >
       <div 

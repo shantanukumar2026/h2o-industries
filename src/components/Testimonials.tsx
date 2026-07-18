@@ -15,7 +15,11 @@ export default function Testimonials() {
       style={{ 
         background: "#F5F7FA", 
         position: "relative",
-        padding: "60px 0 120px 0"
+        height: "100vh",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
       }}
     >
       {/* Background Accent */}

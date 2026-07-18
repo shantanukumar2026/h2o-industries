@@ -1,19 +1,15 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Volume2, VolumeX, MessageSquare, Phone, Mail, User, ArrowRight } from "lucide-react";
+import { Volume2, VolumeX, MessageSquare, Phone, Mail, User, ArrowRight, ShieldCheck, Droplet, Leaf, Users } from "lucide-react";
 import homeData from "@/data/home.json";
 
 export default function Hero() {
   const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
+    setIsMuted(!isMuted);
   };
 
   const data = homeData.hero;
@@ -30,15 +26,11 @@ export default function Hero() {
         overflow: "hidden",
       }}
     >
-      {/* Background Video */}
+      {/* Background Image */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-        <video
-          ref={videoRef}
-          src={(data as any).videoBg || "/videos/hero-bg-optimized.mp4"}
-          autoPlay
-          loop
-          muted={isMuted}
-          playsInline
+        <img
+          src="/images/hero-bg-ai.png"
+          alt="Hero Background"
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
         {/* Overlay */}
@@ -46,7 +38,7 @@ export default function Hero() {
           style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(to right, rgba(5,13,28,0.7) 0%, rgba(5,13,28,0.3) 100%)",
+            background: "linear-gradient(to right, rgba(5,13,28,0.9) 0%, rgba(5,13,28,0.2) 100%)",
           }}
         />
       </div>
@@ -57,8 +49,10 @@ export default function Hero() {
           position: "relative",
           zIndex: 10,
           width: "100%",
+          maxWidth: 1440,
           margin: "0 auto",
-          padding: "0 60px",
+          padding: "0 40px",
+          paddingTop: "120px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -71,7 +65,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ maxWidth: 600, display: "flex", flexDirection: "column", gap: 16 }}
+          style={{ maxWidth: 700, display: "flex", flexDirection: "column", gap: 16 }}
         >
           {/* Top Tag */}
           <div
@@ -79,16 +73,17 @@ export default function Hero() {
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
-              background: "#1565C0",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
               padding: "4px 16px",
+              borderRadius: "100px",
               width: "fit-content",
             }}
           >
-            <div style={{ width: 12, height: 2, background: "#fff" }} />
+            <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#42A5F5" }} />
             <span
               style={{
                 color: "#fff",
-                fontSize: 12,
+                fontSize: 11,
                 fontWeight: 800,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
@@ -102,49 +97,58 @@ export default function Hero() {
           <h1
             className="font-display"
             style={{
-              fontSize: "clamp(2rem, 8vw, 4.8rem)",
+              fontSize: "clamp(2.5rem, 8vw, 5rem)",
               fontWeight: 900,
               lineHeight: 1.05,
               color: "#fff",
               textTransform: "uppercase",
-              fontStyle: "italic",
-              letterSpacing: "0.02em",
-              textShadow: "0 10px 30px rgba(0,0,0,0.5)",
-              margin: "16px 0",
+              letterSpacing: "-0.01em",
+              margin: "12px 0",
+              display: "flex",
+              flexDirection: "column",
             }}
           >
-            {data.heading.line1}
-            <br />
-            {data.heading.line2}
-            <br />
-            <span style={{ color: "#42A5F5" }}>{data.heading.highlight}</span>
+            <span>{data.heading.line1}</span>
+            <span>{data.heading.line2}</span>
+            <span style={{ color: "#2196F3" }}>{data.heading.highlight}</span>
           </h1>
 
           {/* Sub block */}
-          <div
-            style={{
-              background: "#1565C0",
-              padding: "16px 24px",
-              width: "fit-content",
-              maxWidth: 400,
-            }}
-          >
+          <div style={{ maxWidth: 600 }}>
             <p
               style={{
-                color: "#fff",
-                fontSize: 14,
-                fontWeight: 700,
-                lineHeight: 1.4,
+                color: "rgba(255,255,255,0.85)",
+                fontSize: "1.1rem",
+                fontWeight: 400,
+                lineHeight: 1.6,
                 margin: 0,
               }}
             >
-              {data.subheading.split('\n').map((line, i) => (
-                <span key={i}>
-                  {line}
-                  <br />
-                </span>
-              ))}
+              Next-generation hydro-infrastructure and engineering solutions for cleaner, smarter, more resilient communities across the USA and UK.
             </p>
+          </div>
+
+          {/* Features */}
+          <div style={{ display: "flex", gap: "24px", marginTop: "32px", alignItems: "center", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <ShieldCheck size={28} color="#fff" strokeWidth={1.5} />
+              <span style={{ color: "#fff", fontSize: 13, lineHeight: 1.2 }}>Reliable<br/>Infrastructure</span>
+            </div>
+            <div style={{ width: 1, height: 24, background: "rgba(255,255,255,0.2)" }} className="hide-on-mobile" />
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <Droplet size={28} color="#fff" strokeWidth={1.5} />
+              <span style={{ color: "#fff", fontSize: 13, lineHeight: 1.2 }}>Innovative<br/>Solutions</span>
+            </div>
+            <div style={{ width: 1, height: 24, background: "rgba(255,255,255,0.2)" }} className="hide-on-mobile" />
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <Leaf size={28} color="#fff" strokeWidth={1.5} />
+              <span style={{ color: "#fff", fontSize: 13, lineHeight: 1.2 }}>Sustainable<br/>Future</span>
+            </div>
+            <div style={{ width: 1, height: 24, background: "rgba(255,255,255,0.2)" }} className="hide-on-mobile" />
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <Users size={28} color="#fff" strokeWidth={1.5} />
+              <span style={{ color: "#fff", fontSize: 13, lineHeight: 1.2 }}>Trusted<br/>Partnerships</span>
+            </div>
           </div>
         </motion.div>
 
@@ -158,31 +162,30 @@ export default function Hero() {
             display: "flex",
             flexDirection: "column",
             alignItems: "stretch",
-            gap: 16,
+            gap: 12,
             marginRight: 60, // Space for the side bar
-            background: "rgba(5, 13, 28, 0.3)",
-            backdropFilter: "blur(24px)",
-            WebkitBackdropFilter: "blur(24px)",
-            border: "1px solid rgba(33, 150, 243, 0.2)",
-            borderTop: "4px solid #2196F3",
-            padding: "32px",
-            width: "380px",
-            boxShadow: "0 24px 48px rgba(0,0,0,0.6)",
+            background: "rgba(5, 13, 28, 0.75)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            border: "1px solid rgba(255, 255, 255, 0.05)",
+            borderRadius: "16px",
+            padding: "24px",
+            width: "360px",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8, borderBottom: "1px solid rgba(144, 202, 249, 0.2)", paddingBottom: 16 }}>
-            <div style={{ width: 8, height: 8, background: "#42A5F5", borderRadius: "50%", boxShadow: "0 0 10px #42A5F5" }} />
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+            <div style={{ width: 6, height: 6, background: "#2196F3", borderRadius: "50%", boxShadow: "0 0 10px #2196F3" }} />
             <h3
               style={{
                 color: "#fff",
-                fontSize: 16,
+                fontSize: 13,
                 fontWeight: 800,
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
                 margin: 0,
               }}
             >
-              {data.commandCenter.title}
+              COMMAND CENTER
             </h3>
           </div>
           
@@ -197,23 +200,15 @@ export default function Hero() {
               textDecoration: "none",
               padding: "16px 20px",
               borderRadius: "8px",
-              fontSize: 14,
+              fontSize: 13,
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.05em",
-              border: "1px solid rgba(255,255,255,0.1)",
+              border: "1px solid rgba(255,255,255,0.05)",
               transition: "all 0.2s",
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#2196F3";
-              e.currentTarget.style.borderColor = "#2196F3";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "rgba(255,255,255,0.05)";
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
-            }}
           >
-            {data.commandCenter.primaryButton.text}
+            EXPLORE CAPABILITIES
             <ArrowRight size={18} />
           </a>
 
@@ -228,24 +223,15 @@ export default function Hero() {
               textDecoration: "none",
               padding: "16px 20px",
               borderRadius: "8px",
-              fontSize: 14,
+              fontSize: 13,
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.05em",
               border: "1px solid transparent",
               transition: "all 0.2s",
-              boxShadow: "0 4px 12px rgba(21, 101, 192, 0.4)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#1E88E5";
-              e.currentTarget.style.transform = "translateY(-2px)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#1565C0";
-              e.currentTarget.style.transform = "translateY(0)";
             }}
           >
-            {data.commandCenter.secondaryButton.text}
+            WORK WITH US
             <ArrowRight size={18} />
           </a>
         </motion.div>
@@ -422,7 +408,13 @@ export default function Hero() {
         .side-btn-filled:hover {
           background: #1E88E5;
         }
+        .hide-on-mobile {
+          display: block;
+        }
         @media (max-width: 1023px) {
+          .hide-on-mobile {
+            display: none !important;
+          }
           .hero-container {
             flex-direction: column !important;
             justify-content: center !important;
